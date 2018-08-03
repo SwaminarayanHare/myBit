@@ -8,7 +8,7 @@ export class UserService {
     constructor(private http: HttpClient) { }
   
     addUser(fname,lname,email,password) {
-      console.log("add user");
+      console.log("add user added");
       const uri = '/users/add';
       const obj = {
         fname: fname,
