@@ -15,5 +15,9 @@ export const appRoutes: Routes = [
   },
   { path: 'dashboard',
     component: DashboardComponent
+  },
+  { path: '',
+    redirectTo: '/register',
+    pathMatch: 'full'
   }
 ];
