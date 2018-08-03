@@ -20,11 +20,7 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 
 app.use('/users', userRoutes);
-app.use(app.router);
-app.use(function(req, res) {
-    // Use res.sendfile, as it streams instead of reading the file into memory.
-    res.sendfile(__dirname + '/public/index.html');
-  });
+
 const server = app.listen(port, function(){
 console.log('Listening on port ' + port);
 });
