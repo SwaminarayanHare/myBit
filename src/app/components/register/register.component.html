@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">First Name</label>
+        <input type="text" class="form-control" placeholder="First Name" formControlName="fname" #fname />
+      </div>
+      <div *ngIf="angForm.controls['fname'].invalid && (angForm.controls['fname'].dirty || angForm.controls['fname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['fname'].errors.required">
+         First Name is required.
+        </div>
+      </div>   
+      <div class="form-group">
+        <label class="col-md-4">Last Name</label>
+        <input type="text" class="form-control" formControlName="lname" #lname />
+      </div>
+      <div *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['lname'].errors.required">
+          Last Name is required.
+        </div>
+      </div>    
+      <div class="form-group">
+        <label class="col-md-4">Email</label>
+        <input type="text" class="form-control" formControlName="email" #email />
+      </div>
+      <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['email'].errors.required">
+          Email is required.
+        </div>
+      </div>  
+      <div class="form-group">
+        <label class="col-md-4">Password</label>
+        <input type="text" class="form-control" formControlName="password" #password />
+      </div>
+      <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['password'].errors.required">
+          Password is required.
+        </div>
+      </div>                               
+        <div class="form-group">
+          <button (click)="addUser(fname.value, lname.value,email.value,password.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+  </div>
+</div>
