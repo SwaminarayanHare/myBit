@@ -18,7 +18,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 const port = process.env.PORT || 4000;
-
+app.use(bodyParser.urlencoded({'extended':'false'}));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/register', express.static(path.join(__dirname, 'dist')));
 app.use('/users', userRoutes);
 
 const server = app.listen(port, function(){
