@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/register', express.static(path.join(__dirname, 'dist')));
 app.use('/users', userRoutes);
 app.get('*', function(req, res) {
-    res.sendfile('./src/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendfile('./dist/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 const server = app.listen(port, function(){
 console.log('Listening on port ' + port);
