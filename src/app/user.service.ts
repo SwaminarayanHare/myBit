@@ -9,7 +9,7 @@ export class UserService {
   
     addUser(fname,lname,email,password) {
       console.log("add user");
-      const uri = 'http://localhost:4000/users/add';
+      const uri = '/users/add';
       const obj = {
         fname: fname,
         lname: lname,
