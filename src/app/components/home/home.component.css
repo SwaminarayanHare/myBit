@@ -4,15 +4,49 @@
 /*========================================================
                     Main layout styles
 =========================================================*/
-@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+@import url("assets/css/font-awesome.min.css");
 @import url(http://fonts.googleapis.com/css?family=Marvel);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
 @import url("assets/css/grid.css");
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('../../../assets/fonts/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('../../../assets/fonts/mem5YaGs126MiZpBA-UNirkOUuhp.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url('../../../assets/fonts/mem8YaGs126MiZpBA-UFVZ0b.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Marvel';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marvel'), local('Marvel-Regular'), url('../../../assets/fonts/nwpVtKeoNgBV0qa4llTF.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
  body {
     background: #129894;
     color: #363535;
     font: 300 18px/36px 'Open Sans', sans-serif;
   }
+
   .ic {
     border:0;
     float:right;
@@ -341,6 +375,17 @@
   .header_2.indent_5 {
     padding-bottom: 41px;
   }
+  .camera-wrapper{
+    position: relative;
+  }
+  .text_1.color_1.text_tag{
+    position: absolute;
+    top: 20%;
+    left: 39%;
+    background-color: #24281C;
+    opacity: 0.5;
+    padding: 11px;
+  }
   /*============  Wraps  =============*/
   .wrap_1 {
     padding-top: 124px;
@@ -402,6 +447,7 @@
   .wrap_20 {
     padding-bottom: 46px;
   }
+  
   @media (max-width: 767px) {
     .wrap_11,
     .wrap_14,
@@ -528,6 +574,12 @@
     border: 1px solid #199b97;
     text-align: center;
     border-radius: 100px;
+  }
+  .box_1 .icon_money{
+    background: #2EA3F2 url('assets/images/money.png') no-repeat -2px center;
+    width: 117px;
+    height: 117px;
+    border: 1px solid #2EA3F2;
   }
   .box_1 .icon_1:before {
     content: '%';
