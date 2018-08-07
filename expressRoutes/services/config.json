@@ -1,0 +1,5 @@
+﻿{
+    "connectionString": "mongodb://mytradnix:Welcome123@ds213832.mlab.com:13832/mytradnix",
+    "apiUrl": "",
+    "secret": "token is necessary"
+}

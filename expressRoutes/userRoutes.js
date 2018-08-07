@@ -1,69 +1,85 @@
 // userRoutes.js
 
 var express = require('express');
-var app = express();
-var userRoutes = express.Router();
+var router = express.Router();
+var userService = require('./services/user.service');
 
-// Require Item model in our routes module
-var User = require('../models/User');
+// routes
+router.post('/authenticate', authenticate);
+router.post('/register', register);
+router.get('/', getAll);
+router.get('/current', getCurrent);
+router.put('/:_id', update);
+router.delete('/:_id', _delete);
 
-// Defined store route
-userRoutes.route('/add').post(function (req, res) {
-  var user = new User(req.body);
-  user.save()
-    .then(item => {
-    res.status(200).json({'user': 'User added successfully'});
-    })
-    .catch(err => {
-    res.status(400).send("unable to save to database");
-    });
-});
+module.exports = router;
 
-// Defined get data(index or listing) route
-userRoutes.route('/').get(function (req, res) {
-    User.find(function (err, users){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.json(users);
-    }
-  });
-});
+function authenticate(req, res) {
+    userService.authenticate(req.body.username, req.body.password)
+        .then(function (user) {
+            if (user) {
+                // authentication successful
+                res.send(user);
+            } else {
+                // authentication failed
+                res.status(400).send('Username or password is incorrect');
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-// Defined edit route
-userRoutes.route('/edit/:id').get(function (req, res) {
-  var id = req.params.id;
-  User.findById(id, function (err, user){
-      res.json(user);
-  });
-});
+function register(req, res) {
+    userService.create(req.body)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-//  Defined update route
-userRoutes.route('/update/:id').post(function (req, res) {
-    User.findById(req.params.id, function(err, user) {
-    if (!user)
-      return next(new Error('Could not load Document'));
-    else {
-        user.fname = req.body.fname;
-        user.lname = req.body.lname;
+function getAll(req, res) {
+    userService.getAll()
+        .then(function (users) {
+            res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-        user.save().then(user => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
-});
+function getCurrent(req, res) {
+    userService.getById(req.user.sub)
+        .then(function (user) {
+            if (user) {
+                res.send(user);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-// Defined delete | remove | destroy route
-userRoutes.route('/delete/:id').get(function (req, res) {
-    User.findByIdAndRemove({_id: req.params.id}, function(err, user){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
-});
+function update(req, res) {
+    userService.update(req.params._id, req.body)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
 
-module.exports = userRoutes;
+function _delete(req, res) {
+    userService.delete(req.params._id)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}

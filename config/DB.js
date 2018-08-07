@@ -1,5 +1,6 @@
 // DB.js
 
 module.exports = {
-   DB: 'mongodb://test:test123@ds111562.mlab.com:11562/mytradnix'
+   DB: 'mongodb://mytradnix:Welcome123@ds213832.mlab.com:13832/mytradnix',
+   secret: "token is necessary"
 };

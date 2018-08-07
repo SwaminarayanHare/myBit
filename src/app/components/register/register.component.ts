@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../user.service';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { UserService, AlertService } from  '../../_services/index';
 
 @Component({
   selector: 'app-register',
@@ -8,23 +9,27 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  model: any = {};
+  loading = false;
 
+  constructor(
+      private router: Router,
+      private userService: UserService,
+      private alertService: AlertService
+      ) { }
 
-  title = 'Add User';
-  angForm: FormGroup;
-  constructor(private userservice: UserService, private fb: FormBuilder) {
-    this.createForm();
-   }
-  createForm() {
-    this.angForm = this.fb.group({
-      fname: ['', Validators.required ],
-      lname: ['', Validators.required ],
-      email: ['', Validators.required ],
-      password: ['', Validators.required ],    
-   });
-  }
-  addUser(fname,lname,email,password) {
-      this.userservice.addUser(fname,lname,email,password);
+  register() {
+      this.loading = true;
+      this.userService.create(this.model)
+          .subscribe(
+              data => {
+                  this.alertService.success('Registration successful', true);
+                  this.router.navigate(['/login']);
+              },
+              error => {
+                  this.alertService.error(error);
+                  this.loading = false;
+              });
   }
   ngOnInit() {
   }
