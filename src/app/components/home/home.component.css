@@ -74,31 +74,7 @@
   ul li{
     list-style: none;
   }
-  /*============  Text  =============*/
-  .text_1 {
-    font: 300 68px/60px 'Open Sans', sans-serif;
-  }
-  .text_2 {
-    font: 600 24px/30px 'Open Sans', sans-serif;
-  }
-  .text_3 {
-    font: 300 18px/24px 'Open Sans', sans-serif;
-  }
-  .text_4 {
-    font: 400 14px/16px 'Open Sans', sans-serif;
-  }
-  .text_5 {
-    font: 300 14px/20px 'Open Sans', sans-serif;
-  }
-  .text_6 {
-    font: 400 18px/26px 'Open Sans', sans-serif;
-  }
-  .text_7 {
-    font: 400 18px/20px 'Open Sans', sans-serif;
-  }
-  .text_8 {
-    font: 400 14px/20px 'Open Sans', sans-serif;
-  }
+ 
   /*============  Colors  =============*/
   .color_1 {
     color: #ffffff;
@@ -176,6 +152,11 @@
     color:#fff;
     margin-left: 15px;
   }
+  .btn-plan{
+    width: 100%;
+    margin-left: 0;
+    font-weight: 500;
+  }
    
   /* Main menu styles
   ========================================================*/
@@ -212,47 +193,6 @@
 #content {
     overflow: hidden;
   }
-  /*============  Headers  =============*/
-  .header_1 {
-    text-align: center;
-    font: 600 48px/60px 'Open Sans', sans-serif;
-  }
-  .header_1.indent_1 {
-    padding-bottom: 56px;
-  }
-  .header_1.indent_2 {
-    padding-bottom: 34px;
-  }
-  @media (min-width: 980px) and (max-width: 1199px) {
-    .header_1 {
-      font-size: 40px;
-      line-height: 52px;
-    }
-  }
-  @media (max-width: 767px) {
-    .header_1 {
-      font-size: 36px;
-      line-height: 42px;
-    }
-  }
-  .header_2 {
-    font: 600 36px/30px 'Open Sans', sans-serif;
-  }
-  .header_2.indent_1 {
-    padding-bottom: 30px;
-  }
-  .header_2.indent_2 {
-    padding-bottom: 32px;
-  }
-  .header_2.indent_3 {
-    padding-bottom: 81px;
-  }
-  .header_2.indent_4 {
-    padding-bottom: 43px;
-  }
-  .header_2.indent_5 {
-    padding-bottom: 41px;
-  }
   .camera-wrapper{
     position: relative;
   }
@@ -265,93 +205,185 @@
     padding: 11px;
     font-size: 5vw;
   }
-  /*============  Wraps  =============*/
-  .wrap_1 {
-    padding-top: 124px;
-  }
-  .wrap_2 {
-    padding-top: 71px;
-  }
-  .wrap_3 {
-    padding-bottom: 34px;
-  }
-  .wrap_4 {
-    padding-bottom: 53px;
-  }
-  .wrap_5 {
-    padding-bottom: 95px;
-  }
-  .wrap_6 {
-    padding-bottom: 120px;
-  }
-  .wrap_7 {
-    padding-top: 82px;
-  }
-  .wrap_8 {
-    padding-bottom: 48px;
-  }
-  .wrap_9 {
-    padding-top: 104px;
-  }
-  .wrap_10 {
-    padding-bottom: 44px;
-  }
-  .wrap_11 {
-    padding-top: 123px;
-  }
-  .wrap_12 {
-    padding-bottom: 91px;
-  }
-  .wrap_13 {
-    padding-top: 42px;
-  }
-  .wrap_14 {
-    padding-top: 91px;
-  }
-  .wrap_15 {
-    padding-bottom: 118px;
-  }
-  .wrap_16 {
-    padding-top: 32px;
-  }
-  .wrap_17 {
-    padding-top: 50px;
-  }
-  .wrap_18 {
-    padding-top: 117px;
-  }
-  .wrap_19 {
-    padding-bottom: 115px;
-  }
-  .wrap_20 {
-    padding-bottom: 46px;
+  .container {
+    max-width: 960px;
   }
   
-  @media (max-width: 767px) {
-    .wrap_11,
-    .wrap_14,
-    .wrap_9,
-    .wrap_1,
-    .wrap_18 {
-      padding-top: 50px;
-    }
-    .wrap_12,
-    .wrap_15,
-    .wrap_5,
-    .wrap_19 {
-      padding-bottom: 50px;
-    }
+  .pricing-header {
+    max-width: 700px;
   }
-  @media (max-width: 1199px) {
-    .img-wrap {
-      text-align: center;
-    }
+  
+  .card-deck .card {
+    min-width: 220px;
   }
-  @media (max-width: 767px) {
-    .img-wrap {
-      margin-top: 30px;
-    }
+  .container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+.card-header.capital{
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.card-header.liquid{
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.card-header.sip{
+  color: #286eab;
+  background-color: #d1d9e0;
+  border-color: #d1d9e0;
+}
+.card.mb-4.shadow-sm{
+  transition:  all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+}
+.card.mb-4.shadow-sm:hover {
+  -webkit-box-shadow:0px 0px 30px rgba(0, 0, 0, 0.2) !important;
+  -moz-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer;
+}
+
+
+.card .capitalList{
+  padding-left: 0;
+  list-style-type: square;
+  margin-left: 26px;
+  display: table;
+}
+
+.card .capitalList li{
+  list-style: square;
+  margin: 0;
+  padding: 0;
+}
+.card .liq-fheight{
+  padding-bottom: 355px;
+}
+.card .sip-fheight{
+  padding-bottom: 259px;
+}
+.table .active{
+  background-color: rgba(0,0,0,.05);
+}
+
+@media (max-width: 766px) {
+  .card .liq-fheight{
+    padding-bottom: 316px;
   }
+  .card .sip-fheight{
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 575px) {
+  .card .liq-fheight{
+    padding-bottom: 0;
+  }
+  .card .sip-fheight{
+    padding-bottom: 0;
+  }
+}
+
+.marketing .card{
+  margin-top: 100px;
+  border:none;
+  padding:5px;
+}
+/*------most popular corner-----*/
+
+/* CSS-only ribbon styles    */
+.cnrflash
+{
+    /*Position correctly within container*/
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    z-index: 1; /*Set overflow to hidden, to mask inner square*/
+    overflow: hidden; /*Set size and add subtle rounding  		to soften edges*/
+    width: 100px;
+    height: 100px;
+    border-radius: 3px 5px 3px 0;
+}
+.cnrflash-inner
+{
+    /*Set position, make larger then 			container and rotate 45 degrees*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 145px;
+    height: 145px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -o-transform: rotate(45deg); /* Opera */
+    -moz-transform: rotate(45deg); /* Firefox */
+    -webkit-transform: rotate(45deg); /* Safari and Chrome */
+    transform-origin:  100% 100%;
+    -webkit-transform-origin: 100% 100%; /*Purely decorative effects to add texture and stuff*/ /* Safari and Chrome */
+    -ms-transform-origin: 100% 100%;  /* IE 9 */
+    -o-transform-origin: 100% 100%; /* Opera */
+    -moz-transform-origin: 100% 100%; /* Firefox */
+    background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.1) 50%), linear-gradient(0deg, transparent 0%, rgba(1,1,1,.2) 50%);
+    background-size: 4px,auto, auto,auto;
+    background-color: #911F26;
+    box-shadow: 0 3px 3px 0 rgba(1,1,1,.5), 0 1px 0 0 rgba(1,1,1,.5), inset 0 -1px 8px 0 rgba(255,255,255,.3), inset 0 -1px 0 0 rgba(255,255,255,.2);
+}
+.cnrflash-inner:before, .cnrflash-inner:after
+{
+    /*Use the border triangle trick to make  				it look like the ribbon wraps round it's 				container*/
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    width: 0;
+    height: 0;
+    border: 8px solid #800000;
+}
+.cnrflash-inner:before
+{
+    left: 1px;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}
+.cnrflash-inner:after
+{
+    right: 0;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+.cnrflash-label
+{
+    /*Make the label look nice*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding-bottom: 5px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(1,1,1,.8);
+    font-size: 0.95em;
+    font-weight: bold;
+    text-align: center;
+}
+.wrap_1{
+  margin-top:120px;
+}
+.wrap_2{
+margin-top: 50px;
+margin-bottom: 50px;
+}
+
   /*============  Butttons  =============*/
   .btn_1 {
     display: inline-block;
@@ -390,56 +422,7 @@
     background: #249f9c;
     text-decoration: none;
   }
-  /*============  Images  =============*/
-  .img_1 {
-    margin: 3px 0 9px 0;
-    float: left;
-  }
-  .img_1 + .img_1 {
-    margin-left: 29px;
-  }
-  @media (max-width: 1199px) {
-    .img_1 {
-      float: none;
-    }
-    .img_1 + .img_1 {
-      margin-left: 0;
-    }
-  }
-  .img_2 {
-    margin: 3px 0 9px 0;
-    float: left;
-  }
-  .img_2 + .img_2 {
-    margin-left: 30px;
-  }
-  .img_2:first-child + .img_2 + .img_2 + .img_2 {
-    margin-left: 0;
-  }
-  @media (min-width: 980px) and (max-width: 1199px) {
-    .img_2 {
-      width: 140px;
-    }
-    .img_2 + .img_2 {
-      margin-left: 20px;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 979px) {
-    .img_2 {
-      width: 108px;
-    }
-    .img_2 + .img_2 {
-      margin-left: 20px;
-    }
-  }
-  @media (max-width: 767px) {
-    .img_2 {
-      float: none;
-    }
-    .img_2 + .img_2 {
-      margin-left: 0;
-    }
-  }
+
   /*============  Boxes  =============*/
   .box_1 {
     text-align: center;
@@ -449,9 +432,10 @@
     display: inline-block;
     width: 117px;
     height: 117px;
-    color: #01918c;
-    border: 1px solid #199b97;
+    color: #911F26;
+    border: 1px solid #911F26;
     text-align: center;
+    opacity: 0.7;
     border-radius: 100px;
   }
   .box_1 .icon_money{
@@ -789,14 +773,47 @@
   /*========================================================
                       FOOTER styles
   =========================================================*/
-  #footer {
-     background: #129894;
-  }
-  @media (max-width: 767px) {
-    #footer {
-      text-align: center;
-    }
-  }
+  .context-dark, .bg-gray-dark, .bg-primary {
+    color: rgba(255, 255, 255, 0.8);
+}
+footer{
+  padding-top:15px;
+}
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #ffffff;
+}
+.nav-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color: #4d6de6;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
+.social-container{
+  text-align: center;
+}
   /*============  Info  =============*/
   .info {
     padding: 23px 0 24px;

@@ -5,7 +5,7 @@ path = require('path'),
 bodyParser = require('body-parser'),
 cors = require('cors'),
 mongoose = require('mongoose'),
-config = require('./config/DB'),
+config = require('./expressRoutes/services/config.json'),
 expressJwt = require('express-jwt');
 userRoutes = require('./expressRoutes/userRoutes');
 /*

@@ -42,131 +42,194 @@
         <div class="container">
                 <div class="card-deck mb-3 text-center">
                         <div class="card mb-4 shadow-sm">
-                          <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Capital Fund</h4>
-                          </div>
-                          <div class="card-body">
-                            <h1 class="card-title pricing-card-title"> Expected Return: 36-47% (Annually)</h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                    <li>Guaranteed Return</li>
-                                    <li><ul>
-                                        <li>
-                                        1 year -20%
-                                        </li>
-                                        <li>
-                                        2 Year- 22.5%
-                                        </li>
-                                        <li>
-                                        3 Year -25%
-                                        </li>
-                                    </ul>
-                                       
-                                      
-                                     </li>
-
-                              <li>Minimum investment Amount: &#8360;10000</li>
-                              <li>Maximum investment Amount: &#8360;1000000</li>
-                              <li>Minimum Investment Period: 12 Month</li>
-                              <li>If you withdrawal your investment before maturity month Withdraw load is 5% charged.</li>
-                              <li>Admin fee 2% (At a time of withdrawing).</li>
-                              <li>Your investments live 24*7.</li>
-                            </ul>
-                            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2">Invest Now</a>
-                          </div>
-                        </div>
-                        <div class="card mb-4 shadow-sm">
-                          <div class="card-header">
+                          <div class="card-header liquid">
                             <h4 class="my-0 font-weight-normal">Liquid Fund</h4>
                           </div>
                           <div class="card-body">
-                            <h1 class="card-title pricing-card-title">Expected Return: 3-8% <small class="text-muted">/ monthly</small></h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                    <li>Minimum investment Amount: &#8360;10000</li>
-                                    <li>Maximum investment Amount: &#8360;1000000</li>
-                                    <li>Admin fee 2% (At a time of withdrawing).</li>
-                                    <li>Your investments live 24*7.</li>
-                            </ul>
-                            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2">Invest Now</a>
+                           <p>Expected Return: <strong class=""> 3-8% </strong><small>(monthly)</small></p>
+                            <table class="table">
+                                <tbody>
+                                <tr class="active">
+                                    <td>
+                                        Minimum Investment Amount: &#8360;10000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Maximum Investment Amount: &#8360;1000000
+                                    </td>
+                                </tr>
+                                <tr class="active">
+                                    <td>
+                                        Your investments live <strong>24*7</strong>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       <small>Admin fee 2% (At a time of withdrawing).</small> 
+                                    </td>
+                                </tr>                                
+                            </tbody></table>
+                            <div class="liq-fheight"></div>
+                            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
                           </div>
                         </div>
                         <div class="card mb-4 shadow-sm">
-                          <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">SIP</h4>
-                          </div>
-                          <div class="card-body">
-                            <h1 class="card-title pricing-card-title">Expected Return: 3-8% <small class="text-muted">/ monthly</small></h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                    <li>Minimum investment Amount: &#8360;1000</li>
-                                    <li>Maximum investment Amount: &#8360;10000 </li>
-                                    <li>If you withdrawal your investment before 12 month Withdraw load is 5%.</li>
-                                    <li>Admin fee 2% (At a time of withdrawing).</li>
-                                    <li>Your investments live 24*7.</li>
-                            </ul>
-                            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2">Invest Now</a>
-                          </div>
-                        </div>
+                                <div class="card-header capital">
+                                  <h4 class="my-0 font-weight-normal">Capital Fund</h4>
+                                  <div class="cnrflash">
+                                        <div class="cnrflash-inner">
+                                            <span class="cnrflash-label">MOST
+                                                <br>
+                                                POPULR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                 <p>Expected Return: <strong class=""> 36-47% </strong><small>(Annually)</small></p>
+                                  <table class="table">
+                                      <tbody>
+                                          <tr>
+                                          <td class="lead mark">
+                                             <strong >Guaranteed Return</strong>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                              <td>
+                                                  <ul class="capitalList">
+                                                      <li>
+                                                      1Year -> <strong class="lead">20.0%</strong> Return
+                                                      </li>
+                                                      <li>
+                                                      2Year -> <strong class="lead">22.5% </strong>Return
+                                                      </li>
+                                                      <li>
+                                                      3Year -> <strong class="lead">25.0%</strong> Return
+                                                      </li>
+                                                  </ul>
+                                              </td>
+                                          </tr>
+                                      <tr class="active">
+                                          <td>
+                                              Minimum Investment Amount: &#8360;10000
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              Maximum Investment Amount: &#8360;1000000
+                                          </td>
+                                      </tr>
+                                      <tr class="active">
+                                          <td>
+                                              Minimum Investment Period: 12 Month
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              Your investments live <strong>24*7</strong>.
+                                          </td>
+                                      </tr>
+                                      <tr class="active">
+                                          <td>
+                                              <small>If you withdrawal your investment before maturity month Withdraw load is 5% charged.</small>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                             <small>Admin fee 2% (At a time of withdrawing).</small> 
+                                          </td>
+                                      </tr>                                
+                                  </tbody></table>
+                                  <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
+                                </div>
+                              </div>
+                              <div class="card mb-4 shadow-sm">
+                                    <div class="card-header sip">
+                                      <h4 class="my-0 font-weight-normal">SIP</h4>
+                                    </div>
+                                    <div class="card-body">
+                                     <p>Expected Return: <strong class=""> 3-8% </strong><small>(Annually)</small></p>
+                                      <table class="table">
+                                          <tbody>
+                                          <tr class="active">
+                                              <td>
+                                                  Minimum Investment Amount: &#8360;1000
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                  Maximum Investment Amount: &#8360;10000
+                                              </td>
+                                          </tr>
+                                          <tr class="active">
+                                              <td>
+                                                  Your investments live <strong>24*7</strong>.
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                  <small>If you withdrawal your investment before 12 month Withdraw load is 5% charged.</small>
+                                              </td>
+                                          </tr>
+                                          <tr class="active">
+                                              <td>
+                                                 <small>Admin fee 2% (At a time of withdrawing).</small> 
+                                              </td>
+                                          </tr>                                
+                                      </tbody></table>
+                                      <div class="sip-fheight"></div>
+                                      <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
+                                    </div>
+                                  </div>
                       </div>
-        
                       <!--End of plans-->
-
         </div>      
-
-
-
-        <div class="row wrap_1 wrap_5">
-            <div class="grid_3">
-                <div class="box_1">
-                    <div class="icon_1"></div>
-                    <h3 class="text_2 color_2 maxheight1"><a href="#">Budget Planning</a></h3>
-                    <p class="text_3 color_2 maxheight">
-                        Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
-                    </p>
-                    <a class="btn_2" href="#">read more</a></div>
-            </div>
-            <div class="grid_3">
-                <div class="box_1">
-                    <div class="icon_2"></div>
-                    <h3 class="text_2 color_2 maxheight1"><a href="#">Marketing Research</a></h3>
-                    <p class="text_3 color_2 maxheight">
-                        Dorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
-                    </p>
-                    <a class="btn_2" href="#">read more</a></div>
-            </div>
-            <div class="grid_3">
-                <div class="box_1">
-                    <div class="icon_3"></div>
-                    <h3 class="text_2 color_2 maxheight1"><a href="#">Employee Benefits</a></h3>
-                    <p class="text_3 color_2 maxheight">
-                        Kerem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
-                    </p>
-                    <a class="btn_2" href="#">read more</a></div>
-            </div>
-            <div class="grid_3">
-                <div class="box_1">
-                    <div class="icon_4"></div>
-                    <h3 class="text_2 color_2 maxheight1"><a href="#">Risk Management</a></h3>
-                    <p class="text_3 color_2 maxheight">
-                        Norem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis, sit
-                        amet uesas
-                    </p>
-                    <a class="btn_2" href="#">read more</a></div>
-            </div>
-        </div>
     </div>
-    <div class="bg_1 wrap_2 wrap_4">
+    <div class="container marketing">
+            <div class="card-deck mb-3 text-center">
+                    <div class="card mb-4 shadow-sm">
+                                    <div class="box_1">
+                <div class="icon_1"></div>
+                <h3 class="text_2 color_2 maxheight1"><a href="#">Budget Planning</a></h3>
+                <p class="text_3 color_2 maxheight">
+                    Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
+                </p>
+                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
+                    </div>
+                    <div class="card mb-4 shadow-sm">
+            <div class="box_1">
+                <div class="icon_2"></div>
+                <h3 class="text_2 color_2 maxheight1"><a href="#">Market Research</a></h3>
+                <p class="text_3 color_2 maxheight">
+                    Dorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
+                </p>
+                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
+                          </div>
+                          <div class="card mb-4 shadow-sm">
+                            <div class="box_1">
+                <div class="icon_4"></div>
+                <h3 class="text_2 color_2 maxheight1"><a href="#">Risk Management</a></h3>
+                <p class="text_3 color_2 maxheight">
+                    Norem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis, sit
+                    amet uesas
+                </p>
+                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
+                              </div>
+                  </div>
+    </div>  
+    <div class="wrap_1 bg_1">
         <div class="container">
             <div class="row">
-                <div class="preffix_2 grid_8">
-                    <h2 class="header_1 wrap_3 color_3">
-                        The Best Marketing Services, <br/>
-                        Data & Analysis
+                <div>
+                    <h2>
+                        The Best Investment Services <br/>
                     </h2>
                 </div>
             </div>
             <div class="row">
                 <div class="grid_12">
-                    <div class="box_1">
-                        <p class="text_3">
+                    <div>
+                        <p>
                             Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
                             commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
                             laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
@@ -177,101 +240,33 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row wrap_1">
-            <div class="grid_6">
-                <div class="wrap_6">
-                    <div class="box_2 maxheight2">
-                        <div class="put-left"><img src="assets/images/index_img01.png" alt="Image 1"/></div>
-                        <div class="caption">
-                            <h3 class="text_2 color_2">
-                                Save Your Time <br/>
-                                with Us
-                            </h3>
-                            <p class="text_3">
-                                Morem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis,
-                                sit amet ultries wertolio dasererat rutru.
-                            </p>
-                            <a href="#" class="btn_2">read more</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid_6">
-                    <div class="wrap_6">
-                        <div class="box_2 maxheight2">
-                            <div class="put-left"><img src="assets/images/index_img02.png" alt="Image 2"/></div>
-                            <div class="caption">
-                                <h3 class="text_2 color_2">
-                                    The Highest <br/>
-                                    Quality Services
-                                </h3>
-                                <p class="text_3">
-                                    Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis,
-                                    sit amet ultries wertolio dasererat rutrum.
-                                </p>
-                                <a href="#" class="btn_2">read more</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-               
-            </div>
-        </div>
-    </div>
-    <div class="bg_1 wrap_7 wrap_5">
+
+    <div class="wrap_2 bg_1">
         <div class="container">
-            <div class="row">
-                <div class="grid_12">
-                    <h2 class="header_1 wrap_8 color_3">
+            <div>
+                <div >
+                    <h2>
                         What Clients Say
                     </h2>
                 </div>
             </div>
             <div class="row">
-                <div class="grid_12">
-                    <div id="owl">
+                <div>
+                    <div>
                         <div class="item">
-                            <p class="text_3">
+                            <p>
                                 Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                                commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                                laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla
-                                ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros,
-                                <br/>
-                                laoreet sit amet est vel, commodo venenatis eros. Fusce adipiscing quam id risus
-                                sagittis, non consequat lacus interdum.
+                                commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus
                             </p>
                         </div>
                         <div class="item">
-                            <p class="text_3">
+                            <p>
                                 Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
                                 commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                                laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla
-                                ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros,
-                                <br/>
-                                laoreet sit amet est vel, commodo venenatis eros. Fusce adipiscing quam id risus
-                                sagittis, non consequat lacus interdum.
+
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row wrap_9 wrap_4 wrap_10">
-            <div class="grid_12">
-                <div class="header_1 wrap_3 color_3">
-                    Get in Touch
-                </div>
-                <div class="box_3">        
-                        <a class="fa fa-twitter" href="https://twitter.com/mytradnix"></a>
-                        <a class="fa fa-facebook" href="https://www.facebook.com/Mytradnix"></a>
-                        <a class="fa fa-linkedin" href="https://www.linkedin.com/in/mytradnix-71720816a/"></a>
-                      <a class="fa fa-pinterest" href="https://www.pinterest.com/mytradnix/"></a>
                 </div>
             </div>
         </div>
@@ -280,15 +275,49 @@
     <!--========================================================
                               FOOTER
     =========================================================-->
-    <footer id="footer" class="color_9">
-        <div class="container">
-            <div class="row">
-                <div class="grid_12">
-                    <p class="info text_4 color_4">
-                        © <span id="copyright-year"></span> | <a href="#">Privacy Policy</a> <br/>
-                        Website designed by <a href="http://www.mytradnix.com/" rel="nofollow">MyTradnix.Com</a>
-                    </p>
+    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+            <div class="container">
+              <div class="row row-30">
+                <div class="col-md-4 col-xl-5">
+                  <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                    <p>We are the best Investment company, dedicated to the best result in various Investment Plans.</p>
+                    <!-- Rights-->
+                    <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+                  </div>
                 </div>
+                <div class="col-md-4">
+                  <h5>Contacts</h5>
+                  <dl class="contact-list">
+                    <dt>Address:</dt>
+                    <dd>Surat, Gujarat.</dd>
+                  </dl>
+                  <dl class="contact-list">
+                    <dt>email:</dt>
+                    <dd><a href="mailto:#">mytradnix@gmail.com</a></dd>
+                  </dl>
+                  <dl class="contact-list">
+                    <dt>phones:</dt>
+                    <dd><a href="tel:#">+91 98790 00947</a> <span>or</span> <a href="tel:#">+91 76980 46366</a>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                  <h5>Links</h5>
+                  <ul class="nav-list">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Plans & Pricing</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
-    </footer>    
+            <div class=" no-gutters social-container">
+                
+                       <a class="fa fa-twitter" href="https://twitter.com/mytradnix"></a>
+                    <a class="fa fa-facebook" href="https://www.facebook.com/Mytradnix"></a>
+                    <a class="fa fa-linkedin" href="https://www.linkedin.com/in/mytradnix-71720816a/"></a>
+                  <a class="fa fa-pinterest" href="https://www.pinterest.com/mytradnix/"></a>
+                
+            </div>
+          </footer> 
