@@ -17,17 +17,17 @@ service.delete = _delete;
 
 module.exports = service;
 
-function authenticate(username, password) {
+function authenticate(email, password) {
     var deferred = Q.defer();
 
-    db.users.findOne({ username: username }, function (err, user) {
+    db.users.findOne({ email: email }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
             // authentication successful
             deferred.resolve({
                 _id: user._id,
-                username: user.username,
+                email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 token: jwt.sign({ sub: user._id }, config.secret)
@@ -79,14 +79,13 @@ function getById(_id) {
 function create(userParam) {
     var deferred = Q.defer();
     // validation
-    db.users.findOne(
-        { username: userParam.username },
+    db.users.findOne({ $or: [ { email: userParam.email }, { phone: userParam.phone } ] },       
         function (err, user) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
             if (user) {
-                // username already exists
-                deferred.reject('Username "' + userParam.username + '" is already taken');
+                // email already exists
+                deferred.reject('email or phone number is already used.');
             } else {
                 createUser();
             }
@@ -97,6 +96,8 @@ function create(userParam) {
         var user = _.omit(userParam, 'password');
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
+        user.isAdmin = false;
+        user.isApproved= false;        
         db.users.insert(
             user,
             function (err, doc) {
@@ -117,16 +118,16 @@ function update(_id, userParam) {
     db.users.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (user.username !== userParam.username) {
-            // username has changed so check if the new username is already taken
+        if (user.email !== userParam.email) {
+            // email has changed so check if the new email is already taken
             db.users.findOne(
-                { username: userParam.username },
+                { email: userParam.email },
                 function (err, user) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
 
                     if (user) {
-                        // username already exists
-                        deferred.reject('Username "' + req.body.username + '" is already taken')
+                        // email already exists
+                        deferred.reject('email "' + req.body.email + '" is already taken')
                     } else {
                         updateUser();
                     }
@@ -141,7 +142,7 @@ function update(_id, userParam) {
         var set = {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
-            username: userParam.username,
+            email: userParam.email,
         };
 
         // update password if it was entered

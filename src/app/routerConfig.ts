@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './_guards/index';
+import { AuthGuard } from './_guards';
 
 export const appRoutes: Routes = [
 

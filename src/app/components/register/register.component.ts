@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
-import { UserService, AlertService } from  '../../_services/index';
+import { UserService, AlertService } from  '../../_services';
 
+const now = new Date();
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +13,11 @@ import { UserService, AlertService } from  '../../_services/index';
 export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
-
+  datemodel: NgbDateStruct;
+  minDate: NgbDateStruct;
+  maxDate: NgbDateStruct;
+  date: {year: number, month: number};
+        
   constructor(
       private router: Router,
       private userService: UserService,
@@ -20,6 +26,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
       this.loading = true;
+      this.model.dob=this.datemodel.day+'/'+this.datemodel.month+'/'+this.datemodel.year;
+      this.model.doj=now;
+      delete this.model.cpassword;
       this.userService.create(this.model)
           .subscribe(
               data => {
@@ -32,6 +41,12 @@ export class RegisterComponent implements OnInit {
               });
   }
   ngOnInit() {
-  }
+   
+    this.minDate = {year: 1950, month: 1, day: 1};
+    this.maxDate = {year: parseInt(now.getFullYear.toString()), month: 1, day: 1};
+  
+}
+
+  
 
 }

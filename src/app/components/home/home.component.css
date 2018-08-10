@@ -269,10 +269,10 @@
   padding: 0;
 }
 .card .liq-fheight{
-  padding-bottom: 355px;
+  padding-bottom: 244px;
 }
 .card .sip-fheight{
-  padding-bottom: 259px;
+  padding-bottom: 244px;
 }
 .table .active{
   background-color: rgba(0,0,0,.05);
@@ -280,7 +280,7 @@
 
 @media (max-width: 766px) {
   .card .liq-fheight{
-    padding-bottom: 316px;
+    padding-bottom: 244px;
   }
   .card .sip-fheight{
     padding-bottom: 0;
