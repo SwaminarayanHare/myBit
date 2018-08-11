@@ -29,6 +29,12 @@ var User = new Schema({
   },
   doj:{
     type: Date
+  },
+  panCard:{
+    type: String
+  },
+  address:{
+    type:String
   }
   
 },{

@@ -4,7 +4,8 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
-var db = mongo.db(config.connectionString, { native_parser: true });
+var connectionString = process.env.DbUrl || config.connectionString;
+var db = mongo.db(connectionString, { native_parser: true });
 db.bind('users');
 var service = {};
 
@@ -19,7 +20,7 @@ module.exports = service;
 
 function authenticate(email, password) {
     var deferred = Q.defer();
-
+    var secret = process.env.Secret || config.secret;
     db.users.findOne({ email: email }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
@@ -30,7 +31,7 @@ function authenticate(email, password) {
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                token: jwt.sign({ sub: user._id }, config.secret)
+                token: jwt.sign({ sub: user._id }, secret)
             });
         } else {
             // authentication failed
@@ -97,7 +98,9 @@ function create(userParam) {
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
         user.isAdmin = false;
-        user.isApproved= false;        
+        user.isApproved= false;
+        user.panCard ="";   
+        user.address ="";  
         db.users.insert(
             user,
             function (err, doc) {

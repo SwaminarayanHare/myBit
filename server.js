@@ -19,12 +19,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 const port = process.env.PORT || 4000;
+const secretkey = process.env.Secret || config.secret;
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(expressJwt({
-    secret: config.secret,
+    secret: secretkey ,
     getToken: function (req) {
         if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
             return req.headers.authorization.split(' ')[1];
