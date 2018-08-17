@@ -260,7 +260,7 @@ function forgotpassword(email) {
              template: 'forgot-password-email',
              subject: 'MyTradnix- Reset Password',
              context: {
-               url: 'http://mytradnix.com/resetpassword?token=' + token,
+               url: 'http://www.mytradnix.com/resetpassword?token=' + token,
                name: new_user.firstname
              }
            };
