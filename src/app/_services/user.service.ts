@@ -29,4 +29,8 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete(appConfig.apiUrl + '/users/' + _id);
     }
+
+    forgotpassword(user: User){
+        return this.http.post(appConfig.apiUrl + '/users/forgotpassword', user);
+    }
 }

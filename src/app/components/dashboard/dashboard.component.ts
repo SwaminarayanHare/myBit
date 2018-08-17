@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.loadAllUsers();
+      //this.loadAllUsers();
   }
 
   deleteUser(_id: string) {

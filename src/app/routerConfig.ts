@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
+
 import { AuthGuard } from './_guards';
 
 export const appRoutes: Routes = [
@@ -13,6 +15,7 @@ export const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'fpassword', component: ForgotpasswordComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 

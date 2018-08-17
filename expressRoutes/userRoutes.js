@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('./services/user.service');
+var path = require('path');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -11,6 +12,12 @@ router.get('/', getAll);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
+router.post('/forgotpassword',forgotpassword);
+router.post('/resetpassword',resetpassword);
+router.get('/resetpassword',function (req,res){
+    res.sendFile(path.resolve('./expressRoutes/services/templates/reset-password.html'));
+
+});
 
 module.exports = router;
 
@@ -82,4 +89,23 @@ function _delete(req, res) {
         .catch(function (err) {
             res.status(400).send(err);
         });
+}
+function forgotpassword(req, res) {
+   
+    userService.forgotpassword(req.body.email)
+    .then(function(){
+        res.json('success');
+    })
+    .catch(function (err){
+        res.status(400).send(err);
+    });
+}
+function resetpassword(req, res) {
+    userService.resetpassword(req,res)
+    .then(function(){
+        res.json('success');
+    })
+    .catch(function (err){
+        res.status(400).send(err);
+    });
 }
