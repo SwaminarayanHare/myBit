@@ -1,0 +1,94 @@
+<div class="main-panel">
+  <app-navbar></app-navbar>
+  <adminalert></adminalert>
+  <div class="text-center" cz-shortcut-listen="true">
+    <form class="form-unitprice" name="form" (ngSubmit)="f.form.valid && addAsset()" #f="ngForm">
+    <h1 class="h3 mb-3 font-weight-normal">Set Unit Price for User</h1>
+   
+       <div class="input-group mb-3"  [ngClass]="{
+          'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
+          'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+          }">
+          <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="Unit Price" value="" [(ngModel)]="model.price" #price="ngModel" required>
+          <div class="invalid-feedback">
+             Enter Valid Unit price
+          </div>
+       </div>
+    <div class="form-group padding-top">
+       <button [disabled]="loading" class="btn btn-primary">Save</button>
+       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+       <a [routerLink]="['/admin/home']" class="btn btn-link">Cancel</a>
+    </div>
+    </form>
+  </div>
+  
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Date</th>
+          <th scope="col">Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of assets;let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{asset.price}}</td>
+          <td>{{asset.date | date:'medium'}}</td>
+          <td *ngIf="asset.iscurrent" ><button [disabled]="loading" (click)="selectAsset(asset)" class="btn btn-primary">Update</button></td>
+          <td *ngIf="!asset.iscurrent"></td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+
+     <!-- The Modal -->
+<div id="myModal"  [class.showModal]="showModal === true" showModal class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h2>Update Asset Price</h2>
+        <span class="close" (click)="closeModal()">&times;</span>
+       
+      </div>
+      <div class="modal-body">
+        <div class="text-center" cz-shortcut-listen="true">
+          <form class="form-assignplan" name="form" (ngSubmit)="f.form.valid && updateAsset()" #myform="ngForm">
+
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label float-left">Unit price:</label>
+                  <div class="input-group mb-3"  [ngClass]="{
+                    'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
+                    'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+                    }">
+                    <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="" value="" [(ngModel)]="updateassetmodel.price" #price="ngModel" required>
+                    <div class="invalid-feedback">
+                       Enter Valid Unit price
+                    </div>
+                 </div>
+                </div>
+
+
+
+           <hr/>
+          <div class="form-group padding-top button-bottom">
+             <button [disabled]="loading" class="btn btn-primary">Save</button>
+             <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+             <a (click)="closeModal()" class="btn btn-link">Cancel</a>
+          </div>
+          </form>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  
+  </div>
+
+<app-footer></app-footer>
+   
+</div>

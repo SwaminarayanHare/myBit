@@ -1,0 +1,25 @@
+<div class="alert alert-danger">
+    <strong>Action Item! </strong>After updating below details, Send scanned copy of your PAN Card and Permanent Address proof to email <a href="mailto:mytradnix@gmail.com">mytradnix@gmail.com</a>
+    After verification your account will be activated.(It usually takes 12-24hours after sending an email.)
+  </div>
+
+<form class="needs-validation" name="form" (ngSubmit)="f.form.valid && updateDocs()" #f="ngForm" novalidate="">
+<div class="mb-3">
+    <label for="address">PAN Card Number</label>
+    <input type="text" class="form-control" id="panCard" name="panCard" [(ngModel)]="model.panCard" #panCard="ngModel" placeholder="PAN Number" required>
+    <div class="invalid-feedback">
+      Please enter your PAN card.
+    </div>
+  </div>
+<div class="mb-3">
+    <label for="address">Permanent Address(As per address proof)</label>
+    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="model.address" #address="ngModel" placeholder="1234 Main St" required>
+    <div class="invalid-feedback">
+      Please enter your permanent address.
+    </div>
+  </div>
+  <hr class="mb-4">
+  <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+  <a [routerLink]="['/fpassword']" class="btn btn-link">Forgot Password</a>
+</form>

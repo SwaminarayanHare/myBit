@@ -31,11 +31,14 @@ app.use(expressJwt({
 
 // routes
 app.use('/users', require('./expressRoutes/userRoutes'));
+app.use('/plans', require('./expressRoutes/planRoutes'));
+app.use('/subscription', require('./expressRoutes/subscriptionRoutes'));
+app.use('/asset', require('./expressRoutes/assetRoutes'));
 app.use('/', require('./expressRoutes/userRoutes'));
 // error handler
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).send('Invalid Token');
+        res.status(401).send('Invalid Session! Please do not Refresh Browser..Go to <a href="http://www.mytradnix.com">Mytradnix.com</a>');
     } else {
         throw err;
     }

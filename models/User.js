@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var User = new Schema({
-  firstname: {
+  firstName: {
     type: String
   },
-  lastname: {
+  lastName: {
     type: String
   },
   email: {

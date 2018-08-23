@@ -7,13 +7,15 @@ import { User } from '../_models';
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) { 
-     
     }
    
     getAll() {
         return this.http.get<User[]>(appConfig.apiUrl + '/users');
     }
-
+   
+    getAllUnVerified() {
+        return this.http.get<User[]>(appConfig.apiUrl + '/users/getAllUnVerified');
+    }
     getById(_id: string) {
         return this.http.get(appConfig.apiUrl + '/users/' + _id);
     }

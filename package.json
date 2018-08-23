@@ -37,14 +37,14 @@
     "mongodb": "^2.0.0",
     "mongoose": "^5.2.6",
     "mongoskin": "^2.1.0",
+    "nodemailer": "^4.6.7",
+    "nodemailer-express-handlebars": "^3.0.0",
     "nodemon": "^1.18.3",
     "q": "^1.4.1",
     "request": "^2.87.0",
     "rootpath": "^0.1.2",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19",
-    "nodemailer-express-handlebars": "^3.0.0",
-    "nodemailer": "^4.6.7"
+    "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",

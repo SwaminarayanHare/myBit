@@ -10,6 +10,9 @@ var nodemailer = require('nodemailer');
 var connectionString = process.env.DbUrl || config.connectionString;
 var db = mongo.db(connectionString, { native_parser: true });
 db.bind('users');
+db.bind('plans');
+db.bind('subscriptions');
+db.bind('asset');
 var service = {};
 hbs = require('nodemailer-express-handlebars'),
 senderemail = process.env.MAILER_EMAIL_ID,
@@ -39,6 +42,17 @@ service.update = update;
 service.delete = _delete;
 service.forgotpassword = forgotpassword;
 service.resetpassword = reset_password;
+service.addPlan = addPlan;
+service.updatePlan = updatePlan;
+service.getAllPlans = getAllPlans;
+service.addSubscription = addSubscription;
+service.getAllSubscriptions = getAllSubscriptions;
+service.getByIdSub = getByIdSub;
+service.addAsset= addAsset;
+service.updateAsset = updateAsset;
+service.getAllAsset = getAllAsset;
+service.getCurrentAssetVal = getCurrentAssetVal;
+service.getAllUnVerified = getAllUnVerified;
 
 module.exports = service;
 
@@ -55,6 +69,8 @@ function authenticate(email, password) {
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
+                isAdmin: user.isAdmin,
+                isApproved: user.isApproved,
                 token: jwt.sign({ sub: user._id }, secret)
             });
         } else {
@@ -67,7 +83,7 @@ function authenticate(email, password) {
 }
 
 function getAll() {
-    var deferred = Q.defer();
+ var deferred = Q.defer();
 
     db.users.find().toArray(function (err, users) {
         if (err) deferred.reject(err.name + ': ' + err.message);
@@ -81,7 +97,26 @@ function getAll() {
     });
 
     return deferred.promise;
+
 }
+
+function getAllUnVerified() {
+    var deferred = Q.defer();
+   
+       db.users.find({ isApproved:false }).toArray(function (err, users) {
+           if (err) deferred.reject(err.name + ': ' + err.message);
+   
+           // return users (without hashed passwords)
+           users = _.map(users, function (user) {
+               return _.omit(user, 'hash');
+           });
+   
+           deferred.resolve(users);
+       });
+   
+       return deferred.promise;
+   
+   }
 
 function getById(_id) {
     var deferred = Q.defer();
@@ -100,6 +135,24 @@ function getById(_id) {
 
     return deferred.promise;
 }
+function getByIdSub(_id) {
+    var deferred = Q.defer();
+
+    db.subscriptions.find({ userid: _id }).toArray(function (err, subs){
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (subs) {
+            
+            deferred.resolve(subs);
+        } else {
+            // user not found
+            deferred.resolve("No Plan subscribed");
+        }
+    });
+
+    return deferred.promise;
+}
+
 
 function create(userParam) {
     var deferred = Q.defer();
@@ -185,9 +238,9 @@ function update(_id, userParam) {
     function updateUser() {
         // fields to update
         var set = {
-            firstName: userParam.firstName,
-            lastName: userParam.lastName,
-            email: userParam.email,
+            panCard: userParam.panCard,
+            address: userParam.address,
+            isApproved: userParam.isApproved,
         };
 
         // update password if it was entered
@@ -352,3 +405,197 @@ function reset_password(req,res) {
   }
   return deferred.promise;
 }
+
+function addPlan(planParam) {
+    var deferred = Q.defer();
+    console.log(planParam);
+    // validation
+    db.plans.findOne({ $or: [ { name: planParam.name }] },       
+        function (err, plan) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+
+            if (plan) {
+                // planname already exists
+                deferred.reject('plan name already exists.');
+            } else {
+                addNewPlan();
+            }
+        });
+
+    function addNewPlan() {
+        // set user object to userParam without the cleartext password
+        db.plans.insert(
+            planParam,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                }
+                else{
+                    deferred.resolve("plan added successfully!");
+                }
+            });
+    }
+    return deferred.promise;
+}
+
+function updatePlan(_id, planParam) {
+    var deferred = Q.defer();
+
+    // validation
+    db.plans.findById(_id, function (err, plan) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (plan.name !== planParam.name) {
+            // email has changed so check if the new email is already taken
+            db.plans.findOne(
+                { name: planParam.name },
+                function (err, plan) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+
+                    if (plan) {
+                        // email already exists
+                        deferred.reject('planName already exists!')
+                    } else {
+                        updatemyPlan();
+                    }
+                });
+        } else {
+            updatemyPlan();
+        }
+    });
+
+    function updatemyPlan() {
+        // fields to update
+        var set = {
+            name: planParam.name,
+            description: planParam.description
+        };
+
+
+        db.plans.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
+    }
+
+    return deferred.promise;
+}
+
+function getAllPlans() {
+    var deferred = Q.defer();
+
+    db.plans.find().toArray(function (err, plans) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        deferred.resolve(plans);
+    });
+
+    return deferred.promise;
+}
+function addSubscription(planParam) {
+    var deferred = Q.defer();
+    // validation
+   
+        // set user object to userParam without the cleartext password
+        db.subscriptions.insert(
+            planParam,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                }
+                else{
+                    deferred.resolve("Plan assigned to user successfully!");
+                }
+            });
+    return deferred.promise;
+}
+
+function getAllSubscriptions() {
+    var deferred = Q.defer();
+
+    db.subscriptions.find().toArray(function (err, subs) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        deferred.resolve(subs);
+    });
+
+    return deferred.promise;
+}
+
+
+function addAsset(assetParam) {
+    var deferred = Q.defer();
+    // validation
+
+    var set = {
+        iscurrent: false,
+    };
+
+    db.asset.update(
+        { iscurrent: true },
+        { $set: set },
+        function (err, doc) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+            insertAsset();
+        });
+
+        function insertAsset(){
+        // set user object to userParam without the cleartext password
+        db.asset.insert(
+            assetParam,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                }
+                else{
+                    deferred.resolve("Asset added successfully!");
+                }
+            });
+            }
+
+    return deferred.promise;
+}
+
+function updateAsset(_id, assetParam) {
+    var deferred = Q.defer();
+
+        // fields to update
+        var set = {
+            price: assetParam.price,
+            date: assetParam.date
+        };
+
+        db.asset.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+                deferred.resolve();
+            });
+    return deferred.promise;
+}
+
+function getAllAsset() {
+    var deferred = Q.defer();
+
+    db.asset.find().toArray(function (err, asset) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        deferred.resolve(asset);
+    });
+
+    return deferred.promise;
+}
+function getCurrentAssetVal() {
+    var deferred = Q.defer();
+
+    db.asset.find({iscurrent:true}).toArray(function (err, asset) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+        deferred.resolve(asset);
+    });
+
+    return deferred.promise;
+}
+
+

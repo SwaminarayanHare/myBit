@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-
 import { UserService, AlertService } from  '../../_services';
 
 const now = new Date();
@@ -27,7 +26,7 @@ export class RegisterComponent implements OnInit {
   register() {
       this.loading = true;
       this.model.dob=this.datemodel.day+'/'+this.datemodel.month+'/'+this.datemodel.year;
-      this.model.doj=now;
+      this.model.doj= new Date();;
       delete this.model.cpassword;
       this.userService.create(this.model)
           .subscribe(
@@ -43,7 +42,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
    
     this.minDate = {year: 1950, month: 1, day: 1};
-    this.maxDate = {year: parseInt(now.getFullYear.toString()), month: 1, day: 1};
+    this.maxDate = {year: parseInt( now.getFullYear.toString()), month: 1, day: 1};
   
 }
 

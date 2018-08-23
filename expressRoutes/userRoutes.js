@@ -9,6 +9,7 @@ var path = require('path');
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
+router.get('/getAllUnVerified', getAllUnVerified);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
@@ -49,6 +50,15 @@ function register(req, res) {
 
 function getAll(req, res) {
     userService.getAll()
+        .then(function (users) {
+            res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+function getAllUnVerified(req, res) {
+    userService.getAllUnVerified()
         .then(function (users) {
             res.send(users);
         })

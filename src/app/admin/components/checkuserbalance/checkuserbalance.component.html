@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="main-panel">
+      <app-navbar></app-navbar>
+      <adminalert></adminalert>
+      <h3>Users</h3>
+      <div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Plan Name</th>
+                <th scope="col">Investment Amount</th>
+                <th scope="col">Unit Qty</th>
+                <th scope="col">Buying Unit Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let subscription of subscriptions;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{subscription.firstName}}</td>
+                <td>{{subscription.lastName}}</td>
+                <td>{{subscription.email}}</td>
+                <td>{{subscription.planid.name}}</td>
+                <td>{{subscription.amount}}</td>
+                <td>{{subscription.assetQuantity}}</td>
+                <td>{{subscription.buyingprice}}</td>
+              </tr>
+            </tbody>
+          </table>  
+        </div>
+        <app-footer></app-footer> 
+      </div>
+      </div>

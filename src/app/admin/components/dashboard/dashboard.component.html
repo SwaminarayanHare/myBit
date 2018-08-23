@@ -1,16 +1,32 @@
-<div class="col-md-6 col-md-offset-3">
+<!--<div class="col-md-6 col-md-offset-3">
   <h1>Hi {{currentUser.firstname}}!</h1>
 
-  <!--<ul>
+  <!<ul>
       <li *ngFor="let user of users">
           {{user.username}} ({{user.firstName}} {{user.lastName}})
           - <a (click)="deleteUser(user._id)">Delete</a>
       </li>
-  </ul> -->
+  </ul> 
 
   <div class="alert alert-danger">
     <strong>Unverified!</strong> Please submit your Pan Card and address proof for verification.
   </div>
 
   <p><a [routerLink]="['/login']">Logout</a></p>
+</div> -->
+
+
+
+<div class="wrapper">
+  
+        <app-sidebar></app-sidebar>
+        
+   
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <router-outlet></router-outlet>
+ 
+            <app-footer></app-footer>
+     
+    </div>
 </div>

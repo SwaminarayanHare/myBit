@@ -438,12 +438,7 @@ margin-bottom: 50px;
     opacity: 0.7;
     border-radius: 100px;
   }
-  .box_1 .icon_money{
-    background: #2EA3F2 url('assets/images/money.png') no-repeat -2px center;
-    width: 117px;
-    height: 117px;
-    border: 1px solid #2EA3F2;
-  }
+
   .box_1 .icon_1:before {
     content: '%';
     font: bold 48px/117px 'Arial', sans-serif;
