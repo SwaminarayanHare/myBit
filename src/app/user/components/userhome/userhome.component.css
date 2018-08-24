@@ -1,0 +1,29 @@
+.main-container{
+    margin-left: 300px;
+}
+.margin-left{
+    margin-left: -9px;
+    margin-right: -9px;
+}
+.card-footer{
+    background-color: #fff;
+    color:#000;
+}
+.bg-panel1{
+    background-color: brown;
+}
+.bg-panel2{
+    background-color: #312e2e;
+}
+.bg-panel3{
+    background-color: crimson;
+}
+.bg-panel4{
+    background-color: #3e86c5;
+}
+@media (max-width: 767px) {
+    .main-container{
+        margin-left: 0;
+    }
+    
+}

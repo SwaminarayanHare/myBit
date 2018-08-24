@@ -25,11 +25,24 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
 
-
+  openMenu : boolean = false;
+  myprofile: boolean = false;
+  submenu: boolean = true;
   constructor() { }
 
   ngOnInit() {
   
+  }
+
+  openMenuBar(){
+    
+    this.openMenu= (this.openMenu == true) ? false:true;
+
+    console.log(this.openMenu)
+  }
+  openMyProfile(){
+    this.myprofile = (this.myprofile == true) ? false:true;
+    this.submenu = false;
   }
 
 }

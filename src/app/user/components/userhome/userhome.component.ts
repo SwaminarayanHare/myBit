@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription ,User } from '../../../_models';
-import {  SubscriptionService } from '../../../_services';
+import {  SubscriptionService, AssetService } from '../../../_services';
 @Component({
   selector: 'app-userhome',
   templateUrl: './userhome.component.html',
@@ -8,16 +8,23 @@ import {  SubscriptionService } from '../../../_services';
 })
 export class UserhomeComponent implements OnInit {
   currentUser: User;
-  subscription: Subscription[]=[];
-  constructor(private subscriptionService: SubscriptionService) { }
+  subscription: Subscription;
+  unitPrice: Number;
+  
+  constructor(private subscriptionService: SubscriptionService, private assetService: AssetService) { }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.getuserSubscription();
+    this.getCurrentAssetPrice();
   }
   getuserSubscription(){
-   this.subscriptionService.getByUserId(this.currentUser._id).subscribe(sub => { this.subscription = sub[0]; console.log(this.subscription)
+   this.subscriptionService.getByUserId(this.currentUser._id).subscribe(sub => { this.subscription = sub[0];
    });
+  }
+  private getCurrentAssetPrice(){
+    this.assetService.getCurrentAssetVal().subscribe(asset => { this.unitPrice = asset[0].price;
+    });
   }
 
 }
