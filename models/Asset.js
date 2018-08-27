@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var Asset = new Schema({
-  price: {
+  quantity: {
     type: Number
   },
   iscurrent: {
@@ -11,6 +11,12 @@ var Asset = new Schema({
   },
   date:{
     type: Date
+  },
+  iscapital:{
+    type:Boolean
+  },
+  isliquid:{
+    type:Boolean
   }
 },{
     collection: 'asset'

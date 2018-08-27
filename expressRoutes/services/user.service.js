@@ -13,6 +13,7 @@ db.bind('users');
 db.bind('plans');
 db.bind('subscriptions');
 db.bind('asset');
+db.bind('stock');
 var service = {};
 hbs = require('nodemailer-express-handlebars'),
 senderemail = process.env.MAILER_EMAIL_ID,
@@ -53,6 +54,10 @@ service.updateAsset = updateAsset;
 service.getAllAsset = getAllAsset;
 service.getCurrentAssetVal = getCurrentAssetVal;
 service.getAllUnVerified = getAllUnVerified;
+service.addStock= addStock;
+service.updateStock = updateStock;
+service.getAllStock = getAllStock;
+service.deleteStock = deleteStock;
 
 module.exports = service;
 
@@ -176,6 +181,7 @@ function create(userParam) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
         user.isAdmin = false;
         user.isApproved= false;
+        user.isActive = true;
         user.panCard ="";   
         user.address ="";  
         db.users.insert(
@@ -198,9 +204,6 @@ function create(userParam) {
                         deferred.resolve();
                        } else {
                          deferred.reject(err.name + ': ' + err.message);
-                         return res.status(422).send({
-                          message: err.name + ': ' + err.message
-                        });
                        }
                      });
             });
@@ -528,13 +531,18 @@ function getAllSubscriptions() {
 function addAsset(assetParam) {
     var deferred = Q.defer();
     // validation
-
+    if(assetParam.iscapital==true){
+        query = {iscurrent:true, iscapital:true}
+    }
+    else{
+        query ={iscurrent:true, isliquid:true}
+    }
     var set = {
         iscurrent: false,
     };
 
     db.asset.update(
-        { iscurrent: true },
+        query,
         { $set: set },
         function (err, doc) {
             if (err) deferred.reject(err.name + ': ' + err.message);
@@ -563,7 +571,7 @@ function updateAsset(_id, assetParam) {
 
         // fields to update
         var set = {
-            price: assetParam.price,
+            quantity: assetParam.quantity,
             date: assetParam.date
         };
 
@@ -598,4 +606,63 @@ function getCurrentAssetVal() {
     return deferred.promise;
 }
 
+function addStock(stockParam) {
+    var deferred = Q.defer();
+    // validation
+        db.stock.insert(
+            stockParam,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                }
+                else{
+                    deferred.resolve("Stock added successfully!");
+                }
+            });      
+                return deferred.promise;
+    }
+
+    function updateStock(_id, stockParam) {
+        var deferred = Q.defer();
+            // fields to update
+            var set = {
+                quantity: stockParam.quantity,
+                price: stockParam.price,
+                date: stockParam.date
+            };
+    
+            db.stock.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $set: set },
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    deferred.resolve();
+                });
+        return deferred.promise;
+    }
+    
+    function getAllStock() {
+        var deferred = Q.defer();
+    
+        db.stock.find().toArray(function (err, stock) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+            deferred.resolve(stock);
+        });
+    
+        return deferred.promise;
+    }
+
+    function deleteStock(_id) {
+        var deferred = Q.defer();
+    
+        db.stock.remove(
+            { _id: mongo.helper.toObjectID(_id) },
+            function (err) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+    
+                deferred.resolve();
+            });
+    
+        return deferred.promise;
+    }
 

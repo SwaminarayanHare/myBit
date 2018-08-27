@@ -1,0 +1,139 @@
+<div class="main-panel">
+    <app-navbar></app-navbar>
+    <adminalert></adminalert>
+    <div class="text-center" cz-shortcut-listen="true">
+      <form class="form-unitquantity" name="form" (ngSubmit)="f.form.valid && addStock()" #f="ngForm">
+      <h1 class="h3 mb-3 font-weight-normal">Add Dynamic Stock</h1>
+     
+      <div class="input-group mb-3"  [ngClass]="{
+        'was-validated ': f.form.controls.coin?.invalid && (f.form.controls.coin?.dirty || f.form.controls.coin?.touched),
+        'has-success': f.form.controls.coin?.valid && (f.form.controls.coin?.dirty || f.form.controls.coin?.touched)
+        }">
+        <select id="coin" name="coin" placeholder="select Coin" class="form-control col-md-5" [(ngModel)]="model.coin"  #coin="ngModel" required>
+          <option *ngFor="let coin of coinlist" [ngValue]="coin">{{coin.name}}({{coin.symbol}})</option>
+        </select>
+        <img *ngIf="coinloading" src="../../../../assets/images/preloader.gif"/>
+        <div class="invalid-feedback" *ngIf="f.form.controls.coin?.invalid && (f.form.controls.coin?.dirty || f.form.controls.coin?.touched)"> 
+          Please select Coin
+        </div> 
+     </div>
+     <div class="input-group mb-3"  [ngClass]="{
+      'was-validated ': f.form.controls.fundtype?.invalid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched),
+      'has-success': f.form.controls.fundtype?.valid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched)
+      }">
+      <select id="fundtype" name="fundtype" class="form-control col-md-5" [(ngModel)]="model.fundtype"  #fundtype="ngModel" required>
+        <option value="capital">Capital Fund</option>
+        <option value="liquid">Liquid Fund</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="f.form.controls.fundtype?.invalid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched)"> 
+        Please select Fund type
+      </div> 
+     </div>     
+      <div class="input-group mb-3"  [ngClass]="{
+            'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+            'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
+            }">
+            <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="Unit Quantity" value="" [(ngModel)]="model.quantity" #quantity="ngModel" required>
+            <div class="invalid-feedback">
+               Enter Valid Coin Quantity
+            </div>
+      </div>
+      <div class="form-group padding-top">
+         <button [disabled]="loading" class="btn btn-primary">Save</button>
+         <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+         <a [routerLink]="['/admin/home']" class="btn btn-link">Cancel</a>
+      </div>
+      </form>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="sub-header">Capital Fund Stock</h2>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Coin</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coin of capitalStocks;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{coin.coin.name}}({{coin.coin.symbol}})</td>
+                    <td>{{coin.quantity}}</td>
+                    <td><button [disabled]="loading" (click)="selectCoin(coin)" class="btn btn-primary">Update</button></td>
+                    <td><button [disabled]="loading" (click)="deleteCoin(coin)" class="btn btn-primary">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>  
+        </div>
+        <div class="col-sm-6" >
+            <h2 class="sub-header">Liquid Fund Stock</h2>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Coin</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coin of liquidStocks;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{coin.coin.name}}({{coin.coin.symbol}})</td>
+                    <td>{{coin.quantity}}</td>
+                    <td><button [disabled]="loading" (click)="selectCoin(coin)" class="btn btn-primary">Update</button></td>
+                    <td><button [disabled]="loading" (click)="deleteCoin(coin)" class="btn btn-primary">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+  
+       <!-- The Modal -->
+  <div id="myModal"  [class.showModal]="showModal === true" showModal class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h2>Update Coin Quantity</h2>
+          <span class="close" (click)="closeModal()">&times;</span> 
+        </div>
+        <div class="modal-body">
+          <div class="text-center" cz-shortcut-listen="true">
+            <form class="form-assignplan" name="form" (ngSubmit)="updateStock()" #myform="ngForm">
+                <div class="input-group mb-3">
+                    <strong class="lead" *ngIf="selectedCoin">{{selectedCoin.coin.name}}({{selectedCoin.fundtype}})</strong>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label float-left">Coin Quantity:</label>
+                    <div class="input-group mb-3"  [ngClass]="{
+                      'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+                      'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
+                      }">
+                      <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="" value="" [(ngModel)]="updatestockmodel.quantity" #quantity="ngModel" required>
+                      <div class="invalid-feedback">
+                         Enter Valid Unit quantity
+                      </div>
+                   </div>
+                  </div>
+             <hr/>
+            <div class="form-group padding-top button-bottom">
+               <button [disabled]="loading" class="btn btn-primary">Save</button>
+               <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+               <a (click)="closeModal()" class="btn btn-link">Cancel</a>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  <app-footer></app-footer> 
+  </div>
+  

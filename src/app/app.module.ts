@@ -15,9 +15,7 @@ import { AlertComponent, } from './_directives';
 import { EqualValidator } from './_directives/EqualValidator.directive';
 import { AuthGuard } from './_guards';
 import { JwtInterceptorProvider, ErrorInterceptorProvider } from './_helpers';
-import { AlertService, AuthenticationService, UserService } from './_services';
-
-
+import { AlertService, AuthenticationService, UserService, PricingService } from './_services';
 
 @NgModule({
   declarations: [
@@ -38,7 +36,8 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     AuthenticationService,
     UserService,
     JwtInterceptorProvider,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    PricingService
   ],
   bootstrap: [AppComponent]
 })

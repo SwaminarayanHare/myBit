@@ -1,0 +1,45 @@
+<div class="main-panel">
+  <app-navbar></app-navbar>
+
+  <div class="container row margin-left">
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="card text-white bg-panel1 o-hidden h-100">
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-list"></i>
+          </div>
+          <div class="mr-5 text2">Capital Nav Price:</div>
+          <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+          <div class="mr-5 text1" *ngIf ="capitalnavprice">{{capitalnavprice}}</div>
+        </div>
+        <a class="card-footer clearfix small z-1" >
+          <span class="float-left"><button [disabled]="loading" (click)="refreshdata()" class="btn btn-link">Refresh</button></span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="card text-white bg-panel2 o-hidden h-100">
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fa fa-fw fa-money"></i>
+          </div>
+          <div class="mr-5 text2">Liquid Nav Price:</div>
+          <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+          <div class="mr-5 text1" *ngIf ="liquidnavprice">{{liquidnavprice}}</div>
+        </div>
+        <a class="card-footer clearfix small z-1" >
+          <span class="float-left"><button [disabled]="loading" (click)="refreshdata()" class="btn btn-link">Refresh</button></span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer> 
+</div>

@@ -1,18 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {  User , Plan, Stock, Asset } from '../../../_models';
-import { UserService, SubscriptionService, PlanService, AssetService, AlertService,PricingService, StockService } from '../../../_services';
+import {  Asset, Stock } from '../../../_models';
+import { AssetService, PricingService, StockService } from '../../../_services';
 
 @Component({
-  selector: 'app-assign-plan',
-  templateUrl: './assign-plan.component.html',
-  styleUrls: ['./assign-plan.component.css']
+  selector: 'app-live-nav',
+  templateUrl: './live-nav.component.html',
+  styleUrls: ['./live-nav.component.css']
 })
-export class AssignPlanComponent implements OnInit {
+export class LiveNavComponent implements OnInit {
 
-  users: User[] = [];
-  plans: Plan[] = [];
-  currentAsset: Number;
-  selectedUser: User;
   assets: any= [];
   stocks: Stock[] = [];
   selectedLiquidAsset: Asset;
@@ -25,42 +21,16 @@ export class AssignPlanComponent implements OnInit {
   liqDstocks: Stock[] = [];
   liquidnavprice : Number;
   capitalnavprice : Number;
-
-  showModal:Boolean = false;
-  model: any = {};
   loading = false;
-  constructor(private userService: UserService, private subscriptionService: SubscriptionService, private assetService:AssetService,private planService: PlanService,  private alertService: AlertService, private stockService:StockService,private pricingService:PricingService) {
+
+  constructor(private assetService: AssetService, private pricingService: PricingService, private stockService:StockService) {
    
-}
+  }
 
   ngOnInit() {
-    this.loadAllUsers();
-    this.getAllPlans();
-  }
-
-  private loadAllUsers() {
-    this.userService.getAll().subscribe(users => { this.users = users; 
-    });
-  }
-  private getAllPlans() {
-    this.planService.getAll().subscribe(plans => { this.plans = plans; 
-    });
-  } 
-
-  selectuser(user){
-    this.selectedUser=user;
-    this.showModal=true;
-    this.model.amount = 0;
-  }
-  closeModal(){
-    this.showModal=false;
-  }
-  assignPlan(){
-    this.refreshdata();
     this.getAssetUserQuantity();
     this.getLatestCoinPrice();
   }
-
   private getLatestCoinPrice(){
     this.loading=true;
      this.pricingService.getData().subscribe(apidata=>{
@@ -109,30 +79,6 @@ private getcapitalnavprice(capitalMStock,capitalDStock,apidata){
     this.capitalnavprice = (parseFloat(this.capitalnavprice.toString())/parseFloat(this.capitalAssetsUserQty.toString()));
       this.capitalnavprice = parseFloat(this.capitalnavprice.toFixed(2));
 
-      if(this.model.planid.name.toString().toLowerCase().includes('capital') || this.model.planid.name.toString().toLowerCase().includes('sip')){
-        this.model.userid = this.selectedUser._id;
-        this.model.firstName = this.selectedUser.firstName;
-        this.model.lastName = this.selectedUser.lastName;
-        this.model.email = this.selectedUser.email;
-        this.model.subscriptionDate =  new Date();
-        this.model.assetQuantity = (parseInt(this.model.amount) / parseInt(this.capitalnavprice.toString())).toFixed(2);
-        this.model.buyingprice = this.capitalnavprice;
-       
-        
-        this.subscriptionService.create(this.model)
-            .subscribe(
-                data => {
-                    this.loading = false;
-                    this.showModal=false;
-                    this.alertService.success('Plan Assigned successfully', true);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-      }
-
-
 }
 private getliquidnavprice(liquidMstock,liquidDstock,apidata){
   this.liquidnavprice = 0;
@@ -154,29 +100,7 @@ private getliquidnavprice(liquidMstock,liquidDstock,apidata){
 
   this.liquidnavprice = (parseFloat(this.liquidnavprice.toString())/parseFloat(this.liquidAssetsUserQty.toString()));
   this.liquidnavprice = parseFloat(this.liquidnavprice.toFixed(2));
- 
-if(this.model.planid.name.toString().toLowerCase().includes('liquid')){
-  this.model.userid = this.selectedUser._id;
-  this.model.firstName = this.selectedUser.firstName;
-  this.model.lastName = this.selectedUser.lastName;
-  this.model.email = this.selectedUser.email;
-  this.model.subscriptionDate =  new Date();
-  this.model.assetQuantity = (parseInt(this.model.amount) / parseInt(this.liquidnavprice.toString())).toFixed(2);
-  this.model.buyingprice = this.liquidnavprice;
- 
-  
-  this.subscriptionService.create(this.model)
-      .subscribe(
-          data => {
-              this.loading = false;
-              this.showModal=false;
-              this.alertService.success('Plan Assigned successfully', true);
-          },
-          error => {
-              this.alertService.error(error);
-              this.loading = false;
-          });
-}
+  this.loading=false;
 }
 
 private getAssetUserQuantity(){
@@ -200,8 +124,8 @@ refreshdata(){
   this.capDstocks= [];
   this.liqMstocks = [];
   this.liqDstocks = [];
+  this.getAssetUserQuantity();
+  this.getLatestCoinPrice();
 }
 
-
 }
-

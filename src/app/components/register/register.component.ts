@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   register() {
       this.loading = true;
       this.model.dob=this.datemodel.day+'/'+this.datemodel.month+'/'+this.datemodel.year;
-      this.model.doj= new Date();;
+      this.model.doj= new Date();
       delete this.model.cpassword;
       this.userService.create(this.model)
           .subscribe(

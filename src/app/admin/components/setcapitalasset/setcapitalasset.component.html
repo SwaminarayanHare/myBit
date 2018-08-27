@@ -2,16 +2,16 @@
   <app-navbar></app-navbar>
   <adminalert></adminalert>
   <div class="text-center" cz-shortcut-listen="true">
-    <form class="form-unitprice" name="form" (ngSubmit)="f.form.valid && addAsset()" #f="ngForm">
-    <h1 class="h3 mb-3 font-weight-normal">Set Unit Price for User</h1>
+    <form class="form-unitquantity" name="form" (ngSubmit)="f.form.valid && addCapitalAsset()" #f="ngForm">
+    <h1 class="h3 mb-3 font-weight-normal">Set Capital Fund Unit Quantity for User</h1>
    
        <div class="input-group mb-3"  [ngClass]="{
-          'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
-          'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+          'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+          'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
           }">
-          <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="Unit Price" value="" [(ngModel)]="model.price" #price="ngModel" required>
+          <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="Unit Quantity" value="" [(ngModel)]="model.quantity" #quantity="ngModel" required>
           <div class="invalid-feedback">
-             Enter Valid Unit price
+             Enter Valid Unit Quantity
           </div>
        </div>
     <div class="form-group padding-top">
@@ -27,17 +27,17 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Unit Price</th>
+          <th scope="col">Unit Quantity</th>
           <th scope="col">Date</th>
           <th scope="col">Update</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let asset of assets;let i=index">
+        <tr *ngFor="let asset of capitalAssets;let i=index">
           <th scope="row">{{i+1}}</th>
-          <td>{{asset.price}}</td>
+          <td>{{asset.quantity}}</td>
           <td>{{asset.date | date:'medium'}}</td>
-          <td *ngIf="asset.iscurrent" ><button [disabled]="loading" (click)="selectAsset(asset)" class="btn btn-primary">Update</button></td>
+          <td *ngIf="asset.iscurrent" ><button [disabled]="loading" (click)="selectCapitalAsset(asset)" class="btn btn-primary">Update</button></td>
           <td *ngIf="!asset.iscurrent"></td>
         </tr>
       </tbody>
@@ -50,23 +50,23 @@
     <!-- Modal content -->
     <div class="modal-content">
       <div class="modal-header">
-          <h2>Update Asset Price</h2>
+          <h2>Update Capital Fund Unit Quantity</h2>
         <span class="close" (click)="closeModal()">&times;</span>
        
       </div>
       <div class="modal-body">
         <div class="text-center" cz-shortcut-listen="true">
-          <form class="form-assignplan" name="form" (ngSubmit)="f.form.valid && updateAsset()" #myform="ngForm">
+          <form class="form-assignplan" name="form" (ngSubmit)="f.form.valid && updateCapitalAsset()" #myform="ngForm">
 
               <div class="form-group">
-                  <label for="recipient-name" class="col-form-label float-left">Unit price:</label>
+                  <label for="recipient-name" class="col-form-label float-left">Unit Quantity:</label>
                   <div class="input-group mb-3"  [ngClass]="{
-                    'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
-                    'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+                    'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+                    'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
                     }">
-                    <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="" value="" [(ngModel)]="updateassetmodel.price" #price="ngModel" required>
+                    <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="" value="" [(ngModel)]="updateassetmodel.quantity" #quantity="ngModel" required>
                     <div class="invalid-feedback">
-                       Enter Valid Unit price
+                       Enter Valid Unit quantity
                     </div>
                  </div>
                 </div>

@@ -12,7 +12,6 @@ export class UserService {
     getAll() {
         return this.http.get<User[]>(appConfig.apiUrl + '/users');
     }
-   
     getAllUnVerified() {
         return this.http.get<User[]>(appConfig.apiUrl + '/users/getAllUnVerified');
     }

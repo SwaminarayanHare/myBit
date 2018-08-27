@@ -32,6 +32,7 @@ app.use(expressJwt({
 // routes
 app.use('/users', require('./expressRoutes/userRoutes'));
 app.use('/plans', require('./expressRoutes/planRoutes'));
+app.use('/stock', require('./expressRoutes/stockRoutes'));
 app.use('/subscription', require('./expressRoutes/subscriptionRoutes'));
 app.use('/asset', require('./expressRoutes/assetRoutes'));
 app.use('/', require('./expressRoutes/userRoutes'));

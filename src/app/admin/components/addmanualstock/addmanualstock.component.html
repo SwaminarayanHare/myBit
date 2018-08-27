@@ -1,0 +1,172 @@
+<div class="main-panel">
+    <app-navbar></app-navbar>
+    <adminalert></adminalert>
+    <div class="text-center" cz-shortcut-listen="true">
+      <form class="form-unitquantity" name="form" (ngSubmit)="f.form.valid && addStock()" #f="ngForm">
+      <h1 class="h3 mb-3 font-weight-normal">Add Manual Stock</h1>
+      <div class="form-group">
+          <label for="recipient-name" class="col-form-label float-left">Coin Name:</label>
+      <div class="input-group mb-3"  [ngClass]="{
+        'was-validated ': f.form.controls.name?.invalid && (f.form.controls.name?.dirty || f.form.controls.name?.touched),
+        'has-success': f.form.controls.name?.valid && (f.form.controls.name?.dirty || f.form.controls.name?.touched)
+        }">
+        <input type="text" class="form-control col-md-4" id="name" name="name" placeholder="Coin Name" value="" [(ngModel)]="model.name" #name="ngModel" required>
+        <div class="invalid-feedback">
+           Enter Valid Coin Name
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+          <label for="recipient-name" class="col-form-label float-left">Fund:</label>
+     <div class="input-group mb-3"  [ngClass]="{
+      'was-validated ': f.form.controls.fundtype?.invalid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched),
+      'has-success': f.form.controls.fundtype?.valid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched)
+      }">
+      <select id="fundtype" name="fundtype" class="form-control col-md-5" [(ngModel)]="model.fundtype"  #fundtype="ngModel" required>
+        <option value="capital">Capital Fund</option>
+        <option value="liquid">Liquid Fund</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="f.form.controls.fundtype?.invalid && (f.form.controls.fundtype?.dirty || f.form.controls.fundtype?.touched)"> 
+        Please select Fund type
+      </div> 
+     </div>   
+    </div>  
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label float-left">Price:</label>
+     <div class="input-group mb-3"  [ngClass]="{
+      'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
+      'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+      }">
+      <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="Price" value="" [(ngModel)]="model.price" #price="ngModel" required>
+      <div class="invalid-feedback">
+         Enter Valid Price
+      </div>
+      </div>
+      </div>
+      <div class="form-group">
+          <label for="recipient-name" class="col-form-label float-left">Quantity:</label>
+      <div class="input-group mb-3"  [ngClass]="{
+            'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+            'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
+            }">
+            <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="Unit Quantity" value="" [(ngModel)]="model.quantity" #quantity="ngModel" required>
+            <div class="invalid-feedback">
+               Enter Valid Coin Quantity
+            </div>
+      </div>
+      </div>
+      <div class="form-group padding-top">
+         <button [disabled]="loading" class="btn btn-primary">Save</button>
+         <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+         <a [routerLink]="['/admin/home']" class="btn btn-link">Cancel</a>
+      </div>
+      </form>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="sub-header">Manual Capital Fund Stock</h2>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Coin</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coin of capitalStocks;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{coin.name}}</td>
+                    <td>{{coin.price}}</td>
+                    <td>{{coin.quantity}}</td>
+                    <td><button [disabled]="loading" (click)="selectCoin(coin)" class="btn btn-primary">Update</button></td>
+                    <td><button [disabled]="loading" (click)="deleteCoin(coin)" class="btn btn-primary">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>  
+        </div>
+        <div class="col-sm-6" >
+            <h2 class="sub-header">Manual Liquid Fund Stock</h2>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Coin</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>  
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coin of liquidStocks;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{coin.name}}</td>
+                    <td>{{coin.price}}</td>
+                    <td>{{coin.quantity}}</td>
+                    <td><button [disabled]="loading" (click)="selectCoin(coin)" class="btn btn-primary">Update</button></td>
+                    <td><button [disabled]="loading" (click)="deleteCoin(coin)" class="btn btn-primary">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+  
+       <!-- The Modal -->
+  <div id="myModal"  [class.showModal]="showModal === true" showModal class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h2>Update Coin Quantity</h2>
+          <span class="close" (click)="closeModal()">&times;</span> 
+        </div>
+        <div class="modal-body">
+          <div class="text-center" cz-shortcut-listen="true">
+            <form class="form-assignplan" name="updateform" (ngSubmit)="updateStock()" #myform="ngForm">
+                <div class="input-group mb-3">
+                    <strong class="lead" *ngIf="selectedCoin">{{selectedCoin.name}}({{selectedCoin.fundtype}})</strong>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label float-left">Price:</label>
+                    <div class="input-group mb-3"  [ngClass]="{
+                      'was-validated ': f.form.controls.price?.invalid && (f.form.controls.price?.dirty || f.form.controls.price?.touched),
+                      'has-success': f.form.controls.price?.valid && (f.form.controls.price?.dirty || f.form.controls.price?.touched)
+                      }">
+                      <input type="text" class="form-control col-md-4" id="price" name="price" placeholder="" value="" [(ngModel)]="updatestockmodel.price" #price="ngModel" required>
+                      <div class="invalid-feedback">
+                         Enter Valid Price
+                      </div>
+                   </div>
+                  </div>  
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label float-left">Coin Quantity:</label>
+                    <div class="input-group mb-3"  [ngClass]="{
+                      'was-validated ': f.form.controls.quantity?.invalid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched),
+                      'has-success': f.form.controls.quantity?.valid && (f.form.controls.quantity?.dirty || f.form.controls.quantity?.touched)
+                      }">
+                      <input type="text" class="form-control col-md-4" id="quantity" name="quantity" placeholder="" value="" [(ngModel)]="updatestockmodel.quantity" #quantity="ngModel" required>
+                      <div class="invalid-feedback">
+                         Enter Valid Unit quantity
+                      </div>
+                   </div>
+                  </div> 
+             <hr/>
+            <div class="form-group padding-top button-bottom">
+               <button [disabled]="loading" class="btn btn-primary">Save</button>
+               <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+               <a (click)="closeModal()" class="btn btn-link">Cancel</a>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  <app-footer></app-footer> 
+  </div>
+  

@@ -17,14 +17,33 @@
         <a class="nav-link" [routerLink]="['/admin/verifyu']">Verify User</a>
       </li> 
       <li class="nav-item">
+          
+        <ul>
+            <a class="nav-link">Set Stock</a>
+          <li>
+              <a class="nav-link" [routerLink]="['/admin/addstock']">Add Dynamic Stock</a>
+          </li>
+          <li>
+              <a class="nav-link" [routerLink]="['/admin/manualstock']">Add Manual Stock</a>
+          </li>            
+          <li>
+              <a class="nav-link" [routerLink]="['/admin/livenav']">Check Live Nav Price</a>
+          </li>
+        </ul>
+        
+      </li>        
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/admin/assignplan']">Assign Plan To User</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/admin/checkuserbal']">Check User Balance</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/admin/pricing']">Pricing</a>
+        <a class="nav-link" [routerLink]="['/admin/capitalasset']">Set Capital Asset Quantity</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/liquidasset']">Set Liquid Asset Quantity</a>
+      </li>        
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/admin/addplan']">Add New Plan</a>
       </li>    

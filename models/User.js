@@ -35,6 +35,9 @@ var User = new Schema({
   },
   address:{
     type:String
+  },
+  isActive:{
+    type:Boolean
   }
   
 },{

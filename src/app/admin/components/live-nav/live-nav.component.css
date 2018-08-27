@@ -1,5 +1,5 @@
-.main-container{
-    margin-left: 300px;
+.container{
+    margin-top: 15px;
 }
 .margin-left{
     margin-left: -9px;
@@ -22,14 +22,8 @@
     background-color: #3e86c5;
 }
 .text1{
-    font-size: 2em;
+    font-size: 3em;
 }
 .text2{
-    font-size: 1.1em;
-}
-@media (max-width: 767px) {
-    .main-container{
-        margin-left: 0;
-    }
-    
+    font-size: 1.5em;
 }

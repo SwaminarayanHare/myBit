@@ -4,7 +4,6 @@ var express = require('express');
 var router = express.Router();
 var userService = require('./services/user.service');
 var path = require('path');
-
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
@@ -17,7 +16,6 @@ router.post('/forgotpassword',forgotpassword);
 router.post('/resetpassword',resetpassword);
 router.get('/resetpassword',function (req,res){
     res.sendFile(path.resolve('./expressRoutes/services/templates/reset-password.html'));
-
 });
 
 module.exports = router;

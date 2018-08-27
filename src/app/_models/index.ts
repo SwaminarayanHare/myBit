@@ -2,3 +2,5 @@
 export * from './Plan';
 export * from './Subscription';
 export * from './Asset';
+export * from './Coin';
+export * from './Stock';

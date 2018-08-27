@@ -19,6 +19,9 @@
         </li>
         <li class="breadcrumb-item active">Overview</li>
       </ol>
+      <div *ngIf="!currentUser.isApproved"class="alert alert-danger">
+        <strong>Unverified!</strong> Please submit your Pan Card and address proof for verification.
+      </div>
       <div class="row margin-left">
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-panel1 o-hidden h-100">
@@ -26,7 +29,11 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5" *ngIf ="subscription.planid">Your Plan: {{subscription.planid.name}}</div>
+              <div class="mr-5 text2" >
+                Your Plan:</div>
+                <div *ngIf ="subscription" class="text1">
+                {{subscription.planid.name}}
+                </div> 
             </div>
             <a class="card-footer clearfix small z-1" >
               <span class="float-left">View Details</span>
@@ -42,7 +49,11 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-money"></i>
               </div>
-              <div class="mr-5" *ngIf ="subscription.amount">Investment Amount: <i class="fa fa-fw fa-inr"></i>{{subscription.amount}}</div>
+              <div class="mr-5 text2" >
+                  Investment Amount: </div>
+                  <div *ngIf ="subscription" class="text1">
+                      <i class="fa fa-fw fa-inr"></i>{{subscription.amount}}
+                  </div> 
             </div>
             <a class="card-footer clearfix small z-1" >
               <span class="float-left">View Details</span>
@@ -58,7 +69,12 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5" *ngIf ="subscription.assetQuantity">No of Units: {{subscription.assetQuantity}}</div>
+              <div class="mr-5" *ngIf ="subscription">No of Units: </div>
+              <div class="mr-5 text2" >
+                  No of Units:  </div>
+                  <div *ngIf ="subscription" class="text1">
+                      {{subscription.assetQuantity}}
+                  </div> 
             </div>
             <a class="card-footer clearfix small z-1" >
               <span class="float-left">View Details</span>
@@ -69,15 +85,35 @@
           </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-panel4 o-hidden h-100">
+          <div class="card text-white bg-panel1 o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-life-ring"></i>
+                <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5" *ngIf ="unitPrice">Current Unit Price: <i class="fa fa-fw fa-inr"></i>{{unitPrice}}</div>
+              <div class="mr-5 text2">Live Capital Nav Price:</div>
+              <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+              <div class="mr-5 text1" *ngIf ="capitalnavprice">{{capitalnavprice}}</div>
             </div>
             <a class="card-footer clearfix small z-1" >
-              <span class="float-left">View Details</span>
+              <span class="float-left"><button [disabled]="loading" (click)="refreshdata()" class="btn btn-link">Refresh</button></span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-panel2 o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-money"></i>
+              </div>
+              <div class="mr-5 text2">Live Liquid Nav Price:</div>
+              <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+              <div class="mr-5 text1" *ngIf ="liquidnavprice">{{liquidnavprice}}</div>
+            </div>
+            <a class="card-footer clearfix small z-1" >
+              <span class="float-left"><button [disabled]="loading" (click)="refreshdata()" class="btn btn-link">Refresh</button></span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>

@@ -6,7 +6,7 @@ import { UpdatedocumentComponent } from './components/updatedocument/updatedocum
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { CommoncomponentModule } from '../commoncomponent/commoncomponent.module';
 import { FormsModule }   from '@angular/forms';
-import {  SubscriptionService, AssetService } from '../_services';
+import {  SubscriptionService, AssetService, StockService,PricingService } from '../_services';
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import {  SubscriptionService, AssetService } from '../_services';
     FormsModule
   ],
   declarations: [ DashboardComponent, UserhomeComponent, UpdatedocumentComponent ],
-  providers:[ SubscriptionService, AssetService ]
+  providers:[ SubscriptionService, AssetService , StockService, PricingService]
 })
 export class UserModule { }
