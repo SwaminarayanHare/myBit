@@ -15,6 +15,8 @@
                 <th scope="col">Investment Amount</th>
                 <th scope="col">Unit Qty</th>
                 <th scope="col">Buying Unit Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -27,10 +29,55 @@
                 <td>{{subscription.amount}}</td>
                 <td>{{subscription.assetQuantity}}</td>
                 <td>{{subscription.buyingprice}}</td>
+                <td><button [disabled]="loading" (click)="selectSubscription(subscription)" class="btn btn-primary">Update</button></td>
+                <td>
+                    <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+                  <button [disabled]="loading" (click)="deleteSuscription(subscription)" class="btn btn-primary">Delete</button></td>
               </tr>
             </tbody>
           </table>  
         </div>
+
+        <div id="myModal"  [class.showModal]="showModal === true" showModal class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <h2>Update Assigned Plan to User</h2>
+                <span class="close" (click)="closeModal()">&times;</span>
+               
+              </div>
+              <div class="modal-body">
+                <div class="text-center" cz-shortcut-listen="true">
+                  <form class="form-assignplan" name="form" (ngSubmit)="f.form.valid && updateSub()" #f="ngForm">
+                     <div class="input-group mb-3">
+                      <strong class="lead" *ngIf="selectedSub">{{selectedSub.firstName +" "+ selectedSub.lastName}}</strong>
+                     </div>   
+                     <div class="input-group mb-3"  [ngClass]="{
+                      'was-validated ': f.form.controls.amount?.invalid && (f.form.controls.amount?.dirty || f.form.controls.amount?.touched),
+                      'has-success': f.form.controls.amount?.valid && (f.form.controls.amount?.dirty || f.form.controls.amount?.touched)
+                      }">
+                      <input type="text" class="form-control col-md-5" id="amount" name="amount" placeholder="Investment Amount" value="" [(ngModel)]="model.amount" #amount="ngModel" required>
+                      <div class="invalid-feedback">
+                         Please enter valid Investment Amount.
+                      </div>
+                   </div>
+                   <hr/>
+                  <div class="form-group padding-top button-bottom">
+                     <button [disabled]="loading" class="btn btn-primary">Save</button>
+                     <img *ngIf="loading" src="../../../../assets/images/preloader.gif"/>
+                     <a (click)="closeModal()" class="btn btn-link">Cancel</a>
+                  </div>
+                  </form>
+                </div>
+                
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          
+          </div>
+
         <app-footer></app-footer> 
       </div>
       </div>

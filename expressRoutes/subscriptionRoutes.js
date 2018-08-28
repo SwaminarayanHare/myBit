@@ -7,6 +7,7 @@ var userService = require('./services/user.service');
 // routes
 router.post('/add', add);
 router.put('/:_id', update);
+router.delete('/:_id', _delete);
 router.get('/getsub/:_id', getsub);
 router.get('/', getAll);
 module.exports = router;
@@ -23,7 +24,17 @@ function add(req, res) {
 }
 
 function update(req, res) {
-    userService.updatePlan(req.params._id, req.body)
+    userService.updateSubscription(req.params._id, req.body)
+        .then(function () {
+            res.json('success');
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function _delete(req, res) {
+    userService.deleteSubscription(req.params._id)
         .then(function () {
             res.json('success');
         })

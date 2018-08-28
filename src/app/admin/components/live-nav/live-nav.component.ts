@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Asset, Stock } from '../../../_models';
+import {  Asset, Stock, Coin } from '../../../_models';
 import { AssetService, PricingService, StockService } from '../../../_services';
 
 @Component({
@@ -21,8 +21,9 @@ export class LiveNavComponent implements OnInit {
   liqDstocks: Stock[] = [];
   liquidnavprice : Number;
   capitalnavprice : Number;
+  capitalcoins: Coin[] = [];
+  liquidcoins: Coin[] = [];
   loading = false;
-
   constructor(private assetService: AssetService, private pricingService: PricingService, private stockService:StockService) {
    
   }
@@ -67,18 +68,21 @@ private getcapitalnavprice(capitalMStock,capitalDStock,apidata){
         this.capitalnavprice= parseFloat(this.capitalnavprice.toString()) + multiplication;
 });
  //dynamic capital stock price calculation
+ 
   apidata.forEach(coin=>{
     capitalDStock.forEach(dStock=>{
         if(coin.symbol == dStock.coin.symbol){
           let multiplication = parseFloat(coin.price_inr.toString()) * parseFloat(dStock.quantity.toString());
           this.capitalnavprice= parseFloat(this.capitalnavprice.toString()) + multiplication;
+          let c=new Coin();
+          c.name=coin.name,c.symbol=coin.symbol,c.price=coin.price_inr;
+          this.capitalcoins.push(c);
         }
     });  
   });
 
     this.capitalnavprice = (parseFloat(this.capitalnavprice.toString())/parseFloat(this.capitalAssetsUserQty.toString()));
-      this.capitalnavprice = parseFloat(this.capitalnavprice.toFixed(2));
-
+    this.capitalnavprice = parseFloat(this.capitalnavprice.toFixed(2));
 }
 private getliquidnavprice(liquidMstock,liquidDstock,apidata){
   this.liquidnavprice = 0;
@@ -94,6 +98,9 @@ private getliquidnavprice(liquidMstock,liquidDstock,apidata){
       if(coin.symbol == dStock.coin.symbol){
         let multiplication = parseFloat(coin.price_inr.toString()) * parseFloat(dStock.quantity.toString());
         this.liquidnavprice= parseFloat(this.liquidnavprice.toString()) + multiplication;
+        let c=new Coin();
+        c.name=coin.name,c.symbol=coin.symbol,c.price=coin.price_inr;
+        this.liquidcoins.push(c);
       }
   });  
 });
@@ -124,6 +131,8 @@ refreshdata(){
   this.capDstocks= [];
   this.liqMstocks = [];
   this.liqDstocks = [];
+  this.capitalcoins = [];
+  this.liquidcoins = [];
   this.getAssetUserQuantity();
   this.getLatestCoinPrice();
 }

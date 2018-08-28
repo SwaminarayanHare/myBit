@@ -49,6 +49,8 @@ service.getAllPlans = getAllPlans;
 service.addSubscription = addSubscription;
 service.getAllSubscriptions = getAllSubscriptions;
 service.getByIdSub = getByIdSub;
+service.updateSubscription = updateSubscription;
+service.deleteSubscription = deleteSubscription;
 service.addAsset= addAsset;
 service.updateAsset = updateAsset;
 service.getAllAsset = getAllAsset;
@@ -527,6 +529,39 @@ function getAllSubscriptions() {
     return deferred.promise;
 }
 
+function updateSubscription(_id, subParam) {
+    var deferred = Q.defer();
+        // fields to update
+        var set = {
+            assetQuantity: subParam.assetQuantity,
+            amount: subParam.amount,
+            subscriptionDate: subParam.subscriptionDate
+        };
+
+        db.subscriptions.update(
+            { _id: mongo.helper.toObjectID(_id) },
+            { $set: set },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+                deferred.resolve();
+            });
+    return deferred.promise;
+}
+
+
+function deleteSubscription(_id) {
+    var deferred = Q.defer();
+
+    db.subscriptions.remove(
+        { _id: mongo.helper.toObjectID(_id) },
+        function (err) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}
 
 function addAsset(assetParam) {
     var deferred = Q.defer();

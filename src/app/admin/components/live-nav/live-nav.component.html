@@ -2,7 +2,7 @@
   <app-navbar></app-navbar>
 
   <div class="container row margin-left">
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-4 col-sm-8 mb-4">
       <div class="card text-white bg-panel1 o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -20,7 +20,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-4 col-sm-8 mb-4">
       <div class="card text-white bg-panel2 o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -39,7 +39,52 @@
       </div>
     </div>
   </div>
-
-
+  <hr/>
+    <h2>Retrived Coins</h2>
+  <hr/>
+    <div class="row">
+      <div class="col-sm-6">
+          <h2 class="sub-header">Capital Fund Coins</h2>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Coin Name</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">LivePrice</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let coin of capitalcoins;let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{coin.name}}</td>
+                  <td>{{coin.symbol}}</td>
+                  <td>{{coin.price}}</td>
+                </tr>
+              </tbody>
+            </table>  
+      </div>
+      <div class="col-sm-6" >
+          <h2 class="sub-header">Liquid Fund Coins</h2>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Coin Name</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">LivePrice</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let coin of liquidcoins;let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{coin.name}}</td>
+                  <td>{{coin.symbol}}</td>
+                  <td>{{coin.price}}</td>
+                </tr>
+              </tbody>
+            </table>  
+      </div>
+    </div>
   <app-footer></app-footer> 
 </div>
