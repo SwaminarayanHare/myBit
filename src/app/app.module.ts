@@ -9,13 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
-
+import { InquiryComponent } from './components/inquiry/inquiry.component';
 import { appRoutes } from './routerConfig';
 import { AlertComponent, } from './_directives';
 import { EqualValidator } from './_directives/EqualValidator.directive';
 import { AuthGuard } from './_guards';
 import { JwtInterceptorProvider, ErrorInterceptorProvider } from './_helpers';
 import { AlertService, AuthenticationService, UserService, PricingService } from './_services';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AlertService, AuthenticationService, UserService, PricingService } from
     EqualValidator,
     RegisterComponent,
     HomeComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    InquiryComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, FormsModule,NgbModule.forRoot()

@@ -1,6 +1,9 @@
 @import url("assets/css/site.css");
 @import url("assets/css/common.css");
-@import url("assets/css/homepage.css");
 @import url("assets/css/menus.css");
+@import url("assets/css/inquiry.css");
 
 .hmenu li:hover ul{display: block;}
+.inquiryform{
+	padding: 10px;
+}

@@ -1,323 +1,218 @@
 
-
-    <!--========================================================
-                              HEADER
-    =========================================================-->
-
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 border-bottom shadow-sm header">
-            <h1 class="my-0 mr-md-auto font-weight-normal">
-                    <a  [routerLink]="['/home']" routerLinkActive="active">
-                            <img class="trad-logo" src="assets/images/logo.png" alt="Logo"/>
-                    </a>
-            </h1>
-            <nav class="my-2 my-md-0 mr-md-3 menu-bar">
-                    <a [routerLink]="['/home']" >Home</a>
-                    <a [routerLink]="['/plans']" routerLinkActive="active">Plans & Pricing</a>
-                    <a [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
-            </nav>
-            <p class="login-container">
-            <a [routerLink]="['/login']" routerLinkActive="active"class="btn btn-primary btn-login my-2">Login</a>
-            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2">Signup</a>
-            </p>
-        </div>  
-<!--========================================================
-                          CONTENT
-=========================================================-->
-<section id="content">
-    <div class="camera-wrapper">
-        <div id="camera" class="camera-wrap">
-            <div class="banner-wrap">
-                <img src="assets/images/index_slide01.jpg"/>
-                <h2 class="text_1 color_1 text_tag">Invest with Confidence</h2>
-            </div>
-        </div>
-    </div>
-    <div>
-            <!--<div class="icon_money"></div>-->
-       
-        <!--Plans-->
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-4">Plans</h1>
-        </div>  
-        <div class="container">
-                <div class="card-deck mb-3 text-center">
-                        <div class="card mb-4 shadow-sm">
-                          <div class="card-header liquid">
-                            <h4 class="my-0 font-weight-normal">Liquid Fund</h4>
-                          </div>
-                          <div class="card-body">
-                           <p>Expected Return: <strong class=""> 3-8% </strong><small>(monthly)</small></p>
-                            <table class="table">
-                                <tbody>
-                                <tr class="active">
-                                    <td>
-                                        Minimum Investment Amount: &#8360;10000
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Maximum Investment Amount: &#8360;1000000
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        Your investments live <strong>24*7</strong>.
-                                    </td>
-                                </tr>
-                              <!--  <tr>
-                                    <td>
-                                       <small>Admin fee 2% (At a time of withdrawing).</small> 
-                                    </td>
-                                </tr> -->                                
-                            </tbody></table>
-                            <div class="liq-fheight"></div>
-                            <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
-                          </div>
-                        </div>
-                        <div class="card mb-4 shadow-sm">
-                                <div class="card-header capital">
-                                  <h4 class="my-0 font-weight-normal">Capital Fund</h4>
-                                  <div class="cnrflash">
-                                        <div class="cnrflash-inner">
-                                            <span class="cnrflash-label">MOST
-                                                <br>
-                                                POPULR</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                 <p>Expected Return: <strong class=""> 36-47% </strong><small>(Annually)</small></p>
-                                  <table class="table">
-                                      <tbody>
-                                          <tr>
-                                          <td class="lead mark">
-                                             <strong >Guaranteed Return</strong>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                              <td>
-                                                  <ul class="capitalList">
-                                                      <li>
-                                                      1Year -> <strong class="lead">20.0%</strong> Return
-                                                      </li>
-                                                      <li>
-                                                      2Year -> <strong class="lead">22.5% </strong>Return
-                                                      </li>
-                                                      <li>
-                                                      3Year -> <strong class="lead">25.0%</strong> Return
-                                                      </li>
-                                                  </ul>
-                                              </td>
-                                          </tr>
-                                      <tr class="active">
-                                          <td>
-                                              Minimum Investment Amount: &#8360;10000
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                              Maximum Investment Amount: &#8360;1000000
-                                          </td>
-                                      </tr>
-                                      <tr class="active">
-                                          <td>
-                                              Minimum Investment Period: 12 Month
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                              Your investments live <strong>24*7</strong>.
-                                          </td>
-                                      </tr>
-                                      <!-- <tr class="active">
-                                          <td>
-                                              <small>If you withdrawal your investment before maturity month Withdraw load is 5% charged.</small>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                             <small>Admin fee 2% (At a time of withdrawing).</small> 
-                                          </td>
-                                      </tr> -->                                
-                                  </tbody></table>
-                                  <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
-                                </div>
-                              </div>
-                              <div class="card mb-4 shadow-sm">
-                                    <div class="card-header sip">
-                                      <h4 class="my-0 font-weight-normal">SIP</h4>
-                                    </div>
-                                    <div class="card-body">
-                                     <p>Expected Return: <strong class=""> 36-47% </strong><small>(Annually)</small></p>
-                                      <table class="table">
-                                          <tbody>
-                                          <tr class="active">
-                                              <td>
-                                                  Minimum Investment Amount: &#8360;1000
-                                              </td>
-                                          </tr>
-                                          <tr>
-                                              <td>
-                                                  Maximum Investment Amount: &#8360;10000
-                                              </td>
-                                          </tr>
-                                          <tr class="active">
-                                              <td>
-                                                  Your investments live <strong>24*7</strong>.
-                                              </td>
-                                          </tr>
-                                         <!-- <tr>
-                                              <td>
-                                                  <small>If you withdrawal your investment before 12 month Withdraw load is 5% charged.</small>
-                                              </td>
-                                          </tr>
-                                          <tr class="active">
-                                              <td>
-                                                 <small>Admin fee 2% (At a time of withdrawing).</small> 
-                                              </td>
-                                          </tr> -->                                
-                                      </tbody></table>
-                                      <div class="sip-fheight"></div>
-                                      <a [routerLink]="['/register']" routerLinkActive="active"class="btn btn-primary btn-signup my-2 btn-plan">Invest Now</a>
-                                    </div>
-                                  </div>
-                      </div>
-                      <!--End of plans-->
-        </div>      
-    </div>
-    <div class="container marketing">
-            <div class="card-deck mb-3 text-center">
-                    <div class="card mb-4 shadow-sm">
-                                    <div class="box_1">
-                <div class="icon_1"></div>
-                <h3 class="text_2 color_2 maxheight1"><a href="#">Budget Planning</a></h3>
-                <p class="text_3 color_2 maxheight">
-                    Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
-                </p>
-                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
-                    </div>
-                    <div class="card mb-4 shadow-sm">
-            <div class="box_1">
-                <div class="icon_2"></div>
-                <h3 class="text_2 color_2 maxheight1"><a href="#">Market Research</a></h3>
-                <p class="text_3 color_2 maxheight">
-                    Dorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
-                </p>
-                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
-                          </div>
-                          <div class="card mb-4 shadow-sm">
-                            <div class="box_1">
-                <div class="icon_4"></div>
-                <h3 class="text_2 color_2 maxheight1"><a href="#">Risk Management</a></h3>
-                <p class="text_3 color_2 maxheight">
-                    Norem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis, sit
-                    amet uesas
-                </p>
-                <a class="btn btn-primary btn-signup" href="#">read more</a></div>
-                              </div>
-                  </div>
-    </div>  
-    <div class="wrap_1 bg_1">
-        <div class="container">
-            <div class="row">
-                <div>
-                    <h2>
-                        The Best Investment Services <br/>
-                    </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="grid_12">
-                    <div>
-                        <p>
-                            Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                            commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                            laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                            consectetur orci sed
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap_2 bg_1">
-        <div class="container">
-            <div>
-                <div >
-                    <h2>
-                        What Clients Say
-                    </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div>
-                    <div>
-                        <div class="item">
-                            <p>
-                                Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                                commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus
-                            </p>
-                        </div>
-                        <div class="item">
-                            <p>
-                                Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                                commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-    <!--========================================================
-                              FOOTER
-    =========================================================-->
-    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
-            <div class="container">
-              <div class="row row-30">
-                <div class="col-md-4 col-xl-5">
-                  <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
-                    <p>We are the best Investment company, dedicated to the best result in various Investment Plans.</p>
-                    <!-- Rights-->
-                    <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <h5>Contacts</h5>
-                  <dl class="contact-list">
-                    <dt>Address:</dt>
-                    <dd>Surat, Gujarat.</dd>
-                  </dl>
-                  <dl class="contact-list">
-                    <dt>email:</dt>
-                    <dd><a href="mailto:#">mytradnix@gmail.com</a></dd>
-                  </dl>
-                  <dl class="contact-list">
-                    <dt>phones:</dt>
-                    <dd><a href="tel:#">+91 98790 00947</a> <span>or</span> <a href="tel:#">+91 76980 46366</a>
-                    </dd>
-                  </dl>
-                </div>
-                <div class="col-md-4 col-xl-3">
-                  <h5>Links</h5>
-                  <ul class="nav-list">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Plans & Pricing</a></li>
+<div style="height: 2021px; min-height: 2021px;">
+      <div class="root" style="height: 2021px; min-height: 2021px;">
+         <div class="vbox wb_container" id="wb_header">
+            <div class="wb_cont_inner">
+               <div id="wb_element_instance78" class="wb_element wb-menu wb_element_instance78">
+                  <ul class="hmenu">
+                     <li class="active"><a href="#/" target="_self">Home</a></li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Insurance</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Car Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Domestic Travel Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Health Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Overseas Travel Insurance</a></li>
+                           <li><a>Term Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Two-Wheeler Insurance</a></li>
+                           <li><a>Third Party Car Insurance</a></li>
+                           <li><a>Student Travel Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Mediclaim Policy</a></li>
+                           <li><a>Travel Insurance</a></li>
+                           <li><a>Senior Citizen Health Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Life Insurance</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Loan</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Personal Loans</a></li>
+                           <li><a>Car Loans</a></li>
+                           <li><a>Two-Wheeler Loans</a></li>
+                           <li><a>Education Loans</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Mortgage Loan</a></li>
+                           <li><a>Business Loan</a></li>
+                           <li><a>Mudra Loan</a></li>
+                        </ul>
+                     </li>
+                     <li class="">
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Investment</a>
+                        <ul>
+                           <li><a href="#/guaranteed-Investment/" target="_self">guaranteed Investment</a></li>
+                           <li class=""><a href="#/Liquid-Investment/" target="_self">Liquid Investment</a></li>
+                           <li class=""><a href="#/SIP/" target="_self">SIP</a></li>
+                           <li class=""><a [routerLink]="['/inquiry']" routerLinkActive="active">Endowment Policy</a></li>
+                           <li><a>Short Term Investment</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Money Back Policy</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">National Pension scheme (NPC)</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Monthly Income Plan</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Fixed deposit</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Contact</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Enquiry</a></li>
+                           <li><a href="#/Log-in/" target="_self">Log in</a></li>
+                           <li><a href="#/login-page/" target="_self">login page</a></li>
+                           <li><a href="#/Terms-Conditions/" target="_self">Terms &amp; Conditions</a></li>
+                           <li><a href="#/Privacy-Policy/" target="_self">Privacy Policy</a></li>
+                        </ul>
+                     </li>
+                     <li><a>About Us</a></li>
                   </ul>
-                </div>
-              </div>
+                  <div class="clearfix"></div>
+               </div>
+
+               <div id="wb_element_instance1" class="wb_element"><a class="wb_button" [routerLink]="['/register']" routerLinkActive="active" title="Home"><span>Sign up</span></a></div>
+               <div id="wb_element_instance2" class="wb_element"><a class="wb_button" [routerLink]="['/login']" routerLinkActive="active" title="Login" ><span>Log in</span></a></div>
+               <div id="wb_element_instance3" class="wb_element wb_element_picture" title="Mytradnix"><a href="#/"><img alt="Mytradnix" src="assets/images/59a9af953746451933b4f421ea97bc75_143x100.png"></a></div>
             </div>
-            <div class=" no-gutters social-container">
-                
-                       <a class="fa fa-twitter" href="https://twitter.com/mytradnix"></a>
-                    <a class="fa fa-facebook" href="https://www.facebook.com/Mytradnix"></a>
-                    <a class="fa fa-linkedin" href="https://www.linkedin.com/in/mytradnix-71720816a/"></a>
-                  <a class="fa fa-pinterest" href="https://www.pinterest.com/mytradnix/"></a>
-                
+            <div class="wb_cont_outer"></div>
+            <div class="wb_cont_bg"></div>
+         </div>
+         <div class="vbox wb_container" id="wb_main" style="height: 1626px;">
+            <div class="wb_cont_inner">
+               <div id="wb_element_instance4" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance20" class="wb_element wb_element_picture" title=""><img alt="gallery/68fdaa828d60e1828ee849c1f72bbc4c" src="assets/images/da4f4c74cf70e2e0602caaf677a89e53_1350x860.png"></div>
+               <div id="wb_element_instance21" class="wb_element wb_element_picture" title=""><img alt="gallery/c66db6ca1cb223ac0ff7410e51644e50 2" src="assets/images/c87e590e6522ecc047ff51cd5014aca3_470x617.png"></div>
+               <div id="wb_element_instance22" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance23" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance24" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-normal" style="margin: 0cm 0cm 10pt; text-align: left;"><strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11pt"><span style="line-height:115%"><span style="font-family:Calibri,sans-serif">Mytradnix&nbsp;Company is to help clients eliminate the gap between where they are now financially, and where they want to be. ... Furthermore, we strive to produce a perfect long-term performance for our clients, despite the public securities market behavior.</span></span></span></span></strong></p>
+                  <p class="wb-stl-normal" style="text-align: left;"><strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11.0pt"><span style="line-height:115%"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;">Mytradnix aims to invest in and build a portfolio of sustainable investments, driven by established goals to build shareholder value, mindful of its social, economic and environmental responsibilities, as it remains to be committed to integrity, honesty, and fairness in all dealings with its stakeholders.</span></span></span> </span></strong></p>
+               </div>
+               <div id="wb_element_instance25" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-normal" style="text-align: left;"><strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11.0pt"><span style="line-height:115%"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;">We have to work in online trading. In 2013 Our Company started a trading business. Before 2018 we have only worked in private investment but now we </span></span></span></span></strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11.0pt"><span style="line-height:115%"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong>have ,</strong></span></span></span></span><strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11.0pt"><span style="line-height:115%"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"> public investment in our fund.</span></span></span></span></strong></p>
+                  <p class="wb-stl-normal" style="text-align: left;">&nbsp;</p>
+                  <p class="wb-stl-normal" style="text-align: left;"><strong><span style="color:rgba(120,114,120,1);"><span style="font-size:11.0pt"><span style="line-height:115%"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;">Our Company works as an investment adviser. Our company investing in the share market, IPO, mutual funds, government bonds, and private bonds, government schemes, Gold ETF, Fixed deposited.</span></span></span></span></strong></p>
+               </div>
+               <div id="wb_element_instance26" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance27" class="wb_element" style=" line-height: normal;">
+                  <h3 class="wb-stl-heading3"><span style="color:rgba(255,255,255,1);">VISION</span></h3>
+               </div>
+               <div id="wb_element_instance28" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance29" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance30" class="wb_element" style=" line-height: normal;">
+                  <h3 class="wb-stl-heading3"><span style="color:rgba(255,255,255,1);">OUR PARTNERS</span></h3>
+               </div>
+               <div id="wb_element_instance31" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-custom-13"><span style="color:rgba(255,255,255,1);">TOP INVESTMENT&nbsp;OPTION</span></p>
+               </div>
+               <div id="wb_element_instance32" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-custom-13"><span style="color:rgba(255,255,255,1);"><span style="font-size:10.5pt"><span style="line-height:115%"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">INSURANCE OPTION</span></span></span></span></p>
+               </div>
+               <div id="wb_element_instance33" class="wb_element wb_element_picture" title=""><img alt="gallery/logos" src="assets/images/c2a7c264451cadf36e146a777f9971ea_504x210.png"></div>
+               <div id="wb_element_instance34" class="wb_element wb_element_picture" title="Term Life Insurance"><a href="#/Enquiry/"><img alt="Term Life Insurance" src="assets/images/290ce5e27abc9a0b41a5b7e3edf9d810_106x124.png"></a></div>
+               <div id="wb_element_instance35" class="wb_element wb_element_picture" title="Home Loan"><a href="#/Enquiry/"><img alt="Home Loan" src="assets/images/0b622d104550b69c8da697f1739c2399_106x128.png"></a></div>
+               <div id="wb_element_instance36" class="wb_element wb_element_picture" title="Health Insurance"><a href="#/Enquiry/"><img alt="Health Insurance" src="assets/images/25988fe5ef76f75faccd0118e24a5155_106x127.png"></a></div>
+               <div id="wb_element_instance37" class="wb_element wb_element_picture" title="Mortgage Loan"><a href="#/Enquiry/"><img alt="Mortgage Loan" src="assets/images/ee2ac4135b7e059c099a9069e82d43b4_106x128.png"></a></div>
+               <div id="wb_element_instance38" class="wb_element wb_element_picture" title="Car insurance"><a href="#/Enquiry/"><img alt="Car insurance" src="assets/images/5c4a5206c48429402f8f2bc42bdc85ca_109x127.png"></a></div>
+               <div id="wb_element_instance39" class="wb_element wb_element_picture" title="Personal Loan"><a href="#/Enquiry/"><img alt="Personal Loan" src="assets/images/4ff5b0464d1a3f432368ee4846741a1d_109x128.png"></a></div>
+               <div id="wb_element_instance40" class="wb_element wb_element_picture" title="Two Wheel Insurance"><a href="#/Enquiry/"><img alt="Two Wheel Insurance" src="assets/images/c3c5bef85a39240fb15bcbe5482e67be_106x127.png"></a></div>
+               <div id="wb_element_instance41" class="wb_element wb_element_picture" title="Home Insurance"><a href="#/Enquiry/"><img alt="Home Insurance" src="assets/images/8d946256306c142b3c8b7961e6fcafb1_109x127.png"></a></div>
+               <div id="wb_element_instance42" class="wb_element wb_element_picture" title="Chaild Plan"><a href="#/Enquiry/"><img alt="Chaild Plan" src="assets/images/04ce8cdd5d8db8b05eddececc9e14cae_107x127.png"></a></div>
+               <div id="wb_element_instance43" class="wb_element wb_element_picture" title="SIP"><a href="#/SIP/"><img alt="SIP" src="assets/images/7176bb8f929deac78f1af7a4ff6c96a6_108x128.png"></a></div>
+               <div id="wb_element_instance44" class="wb_element wb_element_picture" title="Liquid Investment"><a href="#/Liquid-Investment/"><img alt="Liquid Investment" src="assets/images/c7f9109cb3f0180e365c208071bf362b_109x128.png"></a></div>
+               <div id="wb_element_instance45" class="wb_element wb_element_picture" title="Guaranteed Investment"><a href="#/guaranteed-Investment/"><img alt="Guaranteed Investment" src="assets/images/7a94a1eafd26a2f8e3116efd2a0043d9_106x128.png"></a></div>
+               <div id="wb_element_instance46" class="wb_element wb-menu">
+                  <ul class="hmenu">
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Endowment Policy</a></li>
+                     <li><a>Short Term Investment</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">National Pension scheme (NPC)</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Monthly Income Plan</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Fixed deposit</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Money Back Policy</a></li>
+                     <li><a href="#/guaranteed-Investment/" target="_self">guaranteed Investment</a></li>
+                     <li><a href="#/Liquid-Investment/" target="_self">Liquid Investment</a></li>
+                     <li><a href="#/SIP/" target="_self">SIP</a></li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+               <div id="wb_element_instance47" class="wb_element wb-menu">
+                  <ul class="hmenu">
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Car Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Health Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Domestic Travel Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Overseas Travel Insurance</a></li>
+                     <li><a>Term Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Two-Wheeler Insurance</a></li>
+                     <li><a>Third Party Car Insurance</a></li>
+                     <li><a>Student Travel Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Mediclaim Policy</a></li>
+                     <li><a>Travel Insurance</a></li>
+                     <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Life Insurance</a></li>
+                     <li><a>Senior Citizen Health Insurance</a></li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+               <div id="wb_element_instance48" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance49" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+               <div id="wb_element_instance50" class="wb_element" style=" line-height: normal;">
+                  <h3 class="wb-stl-heading3"><span style="color:rgba(255,255,255,1);">ABOUT US</span></h3>
+               </div>
+               <div id="wb_element_instance51" class="wb_element" style="width: 100%; display: none;">
+               </div>
             </div>
-          </footer> 
+            <div class="wb_cont_outer"></div>
+            <div class="wb_cont_bg"></div>
+         </div>
+         <div class="vbox wb_container" id="wb_footer">
+            <div class="wb_cont_inner" style="">
+               <div id="wb_element_instance5" class="wb_element wb_element_picture" title=""><img alt="gallery/youtube" src="assets/images/17ec91ccd9dc613b5a39573e21c90e4d_31x30.png"></div>
+               <div id="wb_element_instance6" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Address:</span> <span style="color:rgba(214,207,214,1);">Surat, Gujarat, India.</span></span></p>
+               </div>
+               <div id="wb_element_instance7" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">Insurance is the subject matter of solicitation. Visitors are hereby informed that their information submitted on the website may be shared with insurers.</span></p>
+               </div>
+               <div id="wb_element_instance8" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">Product information is authentic and solely based on the information received from the Insurer © Copyright 2018 mytradnix.com. All Rights Reserved.</span></p>
+               </div>
+               <div id="wb_element_instance9" class="wb_element wb_element_picture" title=""><a href="https://www.facebook.com/Mytradnix" title="facebook" target="1"><img alt="gallery/fb" src="assets/images/2f94a1bbd2da20b0ebfb7cfbe191998f_31x30.png"></a></div>
+               <div id="wb_element_instance10" class="wb_element wb_element_picture" title=""><a href="https://www.instagram.com/mytradnix/" title="instagram" target="1"><img alt="gallery/insta" src="assets/images/b3cf77c0851cce51eb05181febfb5ba4_30x31.png"></a></div>
+               <div id="wb_element_instance11" class="wb_element wb_element_picture" title=""><a href="https://twitter.com/mytradnix" title="twitter" target="1"><img alt="gallery/twiter" src="assets/images/b22a9ddf2896d1753e146c0c4b564bfc_31x30.png"></a></div>
+               <div id="wb_element_instance12" class="wb_element wb_element_picture" title=""><a href="https://www.linkedin.com/in/mytradnix-71720816a/" title="linkedin" target="1"><img alt="gallery/in" src="assets/images/0aa6e712eff9507c07307e329e28706d_30x30.png"></a></div>
+               <div id="wb_element_instance13" class="wb_element wb_element_picture" title=""><a href="https://www.pinterest.com/mytradnix/" title="pinterest" target="1"><img alt="gallery/pin" src="assets/images/e6757f4410a4ec8b36995dc933f6d462_31x30.png"></a></div>
+               <div id="wb_element_instance14" class="wb_element" style=" line-height: normal;">
+                  <h1 class="wb-stl-heading1"><strong><span style="color:rgba(255,255,255,1);">Contacts</span></strong></h1>
+               </div>
+               <div id="wb_element_instance15" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Email:</span>&nbsp;</span><font color="#d6cfd6">mytradnix@gmail.com</font></p>
+               </div>
+               <div id="wb_element_instance16" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Phones: +91 98790 00947 or +91 9879912300</span></span></p>
+               </div>
+               <div id="wb_element_instance17" class="wb_element" style=" line-height: normal;">
+                  <h6 class="wb-stl-custom-13"><span style="color:rgba(255,255,255,1);">Follow, like, tweet or post. We Would love to interact with you</span></h6>
+               </div>
+               <div id="wb_element_instance18" class="wb_element" style=" line-height: normal;">
+                  <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">The product information for comparison displayed on this website is of the insurers with whom our company has an agreement.</span></p>
+               </div>
+            </div>
+            <div class="wb_cont_outer">
+               <div id="wb_element_instance19" class="wb_element wb_element_shape">
+                  <div class="wb_shp"></div>
+               </div>
+            </div>
+            <div class="wb_cont_bg"></div>
+         </div>
+         <div class="wb_sbg" style="height: 2021px; min-height: 2021px;"></div>
+      </div>
+   </div>

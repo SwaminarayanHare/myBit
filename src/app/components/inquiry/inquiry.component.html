@@ -1,0 +1,203 @@
+
+<div style="height: 1153px; min-height: 1153px;">
+   <div class="root" style="height: 1153px; min-height: 1153px;">
+      <div class="vbox wb_container" id="wb_header">
+         <div class="wb_cont_inner">
+               <div id="wb_element_instance78" class="wb_element wb-menu wb_element_instance78">
+                  <ul class="hmenu">
+                     <li class="active"><a href="#/" target="_self">Home</a></li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Insurance</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Car Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Domestic Travel Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Health Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Overseas Travel Insurance</a></li>
+                           <li><a>Term Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Two-Wheeler Insurance</a></li>
+                           <li><a>Third Party Car Insurance</a></li>
+                           <li><a>Student Travel Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Mediclaim Policy</a></li>
+                           <li><a>Travel Insurance</a></li>
+                           <li><a>Senior Citizen Health Insurance</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Life Insurance</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Loan</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Personal Loans</a></li>
+                           <li><a>Car Loans</a></li>
+                           <li><a>Two-Wheeler Loans</a></li>
+                           <li><a>Education Loans</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Mortgage Loan</a></li>
+                           <li><a>Business Loan</a></li>
+                           <li><a>Mudra Loan</a></li>
+                        </ul>
+                     </li>
+                     <li class="">
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Investment</a>
+                        <ul>
+                           <li><a href="#/guaranteed-Investment/" target="_self">guaranteed Investment</a></li>
+                           <li class=""><a href="#/Liquid-Investment/" target="_self">Liquid Investment</a></li>
+                           <li class=""><a href="#/SIP/" target="_self">SIP</a></li>
+                           <li class=""><a [routerLink]="['/inquiry']" routerLinkActive="active">Endowment Policy</a></li>
+                           <li><a>Short Term Investment</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Money Back Policy</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">National Pension scheme (NPC)</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Monthly Income Plan</a></li>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Fixed deposit</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a [routerLink]="['/inquiry']" routerLinkActive="active">Contact</a>
+                        <ul>
+                           <li><a [routerLink]="['/inquiry']" routerLinkActive="active">Enquiry</a></li>
+                           <li><a href="#/Log-in/" target="_self">Log in</a></li>
+                           <li><a href="#/login-page/" target="_self">login page</a></li>
+                           <li><a href="#/Terms-Conditions/" target="_self">Terms &amp; Conditions</a></li>
+                           <li><a href="#/Privacy-Policy/" target="_self">Privacy Policy</a></li>
+                        </ul>
+                     </li>
+                     <li><a>About Us</a></li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+            <div id="wb_element_instance54" class="wb_element"><a class="wb_button" href="http://www.mytradnix.com/" title="Home"><span>Sign up</span></a></div>
+            <div id="wb_element_instance55" class="wb_element"><a class="wb_button" href="#/Log-in/" title="Login" target="_blank"><span>Log in</span></a></div>
+            <div id="wb_element_instance56" class="wb_element wb_element_picture" title="Mytradnix"><a href="#/"><img alt="Mytradnix" src="assets/images/59a9af953746451933b4f421ea97bc75_143x100.png"></a></div>
+         </div>
+         <div class="wb_cont_outer"></div>
+         <div class="wb_cont_bg"></div>
+      </div>
+      <div class="vbox wb_container" id="wb_main" style="height: 760px;">
+         <div class="wb_cont_inner">
+            <div id="wb_element_instance57" class="wb_element wb_element_shape">
+               <div class="wb_shp"></div>
+            </div>
+            <div id="wb_element_instance74" class="wb_element wb_element_picture" title=""><img alt="gallery/9a2a095abdf8ca5989525902fa2fe687" src="assets/images/941e6224e2243f846733dbe254472032_854x740.png"></div>
+            <div id="wb_element_instance75" class="wb_element wb_element_shape">
+               <div class="wb_shp inquiryform">
+               	<div class="text-center" cz-shortcut-listen="true">
+  <form class="form-signin" name="form" (ngSubmit)="f.form.valid && inquiry()" #f="ngForm">
+  <alert></alert>
+  <h1 class="h3 mb-3 font-weight-normal">Inquiry Form</h1>
+ 
+     <div class="input-group mb-4"  [ngClass]="{
+        'was-validated ': f.form.controls.product?.invalid && (f.form.controls.product?.dirty || f.form.controls.product?.touched),
+        'has-success': f.form.controls.product?.valid && (f.form.controls.product?.dirty || f.form.controls.product?.touched)
+        }">
+        <select id="product" name="product" placeholder="select Product"  [(ngModel)]="model.product"  #product="ngModel"  class="form-control col-md-5"  required>
+          <option *ngFor="let product of products" [ngValue]="product">{{product}}</option>
+        </select>
+       
+    
+        <div class="invalid-feedback" *ngIf="f.form.controls.product?.invalid && (f.form.controls.product?.dirty || f.form.controls.product?.touched)"> 
+          Please select Product
+        </div> 
+     </div>
+  <div class="row">
+     <div class="col-md-6 mb-3"  [ngClass]="{
+        'was-validated ': f.form.controls.firstName?.invalid && (f.form.controls.firstName?.dirty || f.form.controls.firstName?.touched),
+        'has-success': f.form.controls.firstName?.valid && (f.form.controls.firstName?.dirty || f.form.controls.firstName?.touched)
+        }">
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" value="" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+        <div class="invalid-feedback">
+           First name is required.
+        </div>
+     </div>
+     <div class="col-md-6 mb-3"  [ngClass]="{
+        'was-validated ': f.form.controls.lastName?.invalid && (f.form.controls.lastName?.dirty || f.form.controls.lastName?.touched),
+        'has-success': f.form.controls.lastName?.valid && (f.form.controls.lastName?.dirty || f.form.controls.lastName?.touched)
+        }">
+        <input type="text" class="form-control" id="lastName"  name="lastName" placeholder="Last name" value="" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+        <div class="invalid-feedback">
+           Last name is required.
+        </div>
+     </div>
+  </div>
+
+  <div class="input-group mb-3"
+     [ngClass]="{
+     'was-validated ': f.form.controls.email?.invalid && (f.form.controls.email?.dirty || f.form.controls.email?.touched),
+     'has-success': f.form.controls.email?.valid && (f.form.controls.email?.dirty || f.form.controls.email?.touched)
+     }">
+     <input type="email" class="form-control"  name="email" id="email" placeholder="you@example.com" [(ngModel)]="model.email" #email="ngModel" required pattern="[^ @]*@[^ @]*">        
+     <div class="invalid-feedback">
+        Please enter a valid email address.
+     </div>
+  </div>
+  <div class="mb-3"  [ngClass]="{
+     'was-validated ': f.form.controls.phone?.invalid && (f.form.controls.phone?.dirty || f.form.controls.phone?.touched),
+     'has-success': f.form.controls.phone?.valid && (f.form.controls.phone?.dirty || f.form.controls.phone?.touched)
+     }">
+     <input type="tel" class="form-control"  name="phone" id="phone" placeholder="Phone" [(ngModel)]="model.phone" pattern="[0-9]{10}" #phone="ngModel" required >
+     <div class="invalid-feedback">
+        Please enter a valid Phone number.
+     </div>
+  </div>
+
+  <div class="form-group padding-top">
+     <button [disabled]="loading" class="btn btn-primary">Submit</button>
+     <img *ngIf="loading" src="../../../../assets/images/loader.gif" />
+     <a [routerLink]="['/home']" class="btn btn-link">Home</a>
+  </div>
+  <p class="form-control-note mb-0 small">
+     By clicking on Submit, you agreed to our 
+     <a class="" href="#" target="_blank">Terms Of Use</a> and
+     <a class="" href="#" target="_blank">Privacy Policy</a>.
+  </p>
+  </form>
+</div>
+
+               </div>
+            </div>
+            <div id="wb_element_instance76" class="wb_element" style="width: 100%; display: none;">
+            </div>
+         </div>
+         <div class="wb_cont_outer"></div>
+         <div class="wb_cont_bg"></div>
+      </div>
+      <div class="vbox wb_container" id="wb_footer">
+         <div class="wb_cont_inner" style="">
+            <div id="wb_element_instance58" class="wb_element wb_element_picture" title=""><img alt="gallery/youtube" src="assets/images/17ec91ccd9dc613b5a39573e21c90e4d_31x30.png"></div>
+            <div id="wb_element_instance59" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Address:</span> <span style="color:rgba(214,207,214,1);">Surat, Gujarat, India.</span></span></p>
+            </div>
+            <div id="wb_element_instance60" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">Insurance is the subject matter of solicitation. Visitors are hereby informed that their information submitted on the website may be shared with insurers.</span></p>
+            </div>
+            <div id="wb_element_instance61" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">Product information is authentic and solely based on the information received from the Insurer © Copyright 2018 mytradnix.com. All Rights Reserved.</span></p>
+            </div>
+            <div id="wb_element_instance62" class="wb_element wb_element_picture" title=""><a href="https://www.facebook.com/Mytradnix" title="facebook" target="1"><img alt="gallery/fb" src="assets/images/2f94a1bbd2da20b0ebfb7cfbe191998f_31x30.png"></a></div>
+            <div id="wb_element_instance63" class="wb_element wb_element_picture" title=""><a href="https://www.instagram.com/mytradnix/" title="instagram" target="1"><img alt="gallery/insta" src="assets/images/b3cf77c0851cce51eb05181febfb5ba4_30x31.png"></a></div>
+            <div id="wb_element_instance64" class="wb_element wb_element_picture" title=""><a href="https://twitter.com/mytradnix" title="twitter" target="1"><img alt="gallery/twiter" src="assets/images/b22a9ddf2896d1753e146c0c4b564bfc_31x30.png"></a></div>
+            <div id="wb_element_instance65" class="wb_element wb_element_picture" title=""><a href="https://www.linkedin.com/in/mytradnix-71720816a/" title="linkedin" target="1"><img alt="gallery/in" src="assets/images/0aa6e712eff9507c07307e329e28706d_30x30.png"></a></div>
+            <div id="wb_element_instance66" class="wb_element wb_element_picture" title=""><a href="https://www.pinterest.com/mytradnix/" title="pinterest" target="1"><img alt="gallery/pin" src="assets/images/e6757f4410a4ec8b36995dc933f6d462_31x30.png"></a></div>
+            <div id="wb_element_instance67" class="wb_element" style=" line-height: normal;">
+               <h1 class="wb-stl-heading1"><strong><span style="color:rgba(255,255,255,1);">Contacts</span></strong></h1>
+            </div>
+            <div id="wb_element_instance68" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Email:</span>&nbsp;</span><font color="#d6cfd6">mytradnix@gmail.com</font></p>
+            </div>
+            <div id="wb_element_instance69" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><span style="color:rgba(230,227,230,1);">Phones: +91 98790 00947 or +91 9879912300</span></span></p>
+            </div>
+            <div id="wb_element_instance70" class="wb_element" style=" line-height: normal;">
+               <h6 class="wb-stl-custom-13"><span style="color:rgba(255,255,255,1);">Follow, like, tweet or post. We Would love to interact with you</span></h6>
+            </div>
+            <div id="wb_element_instance71" class="wb_element" style=" line-height: normal;">
+               <p class="wb-stl-custom-15" style="text-align: left;"><span style="color:rgba(255,255,255,1);">The product information for comparison displayed on this website is of the insurers with whom our company has an agreement.</span></p>
+            </div>
+         </div>
+         <div class="wb_cont_outer">
+            <div id="wb_element_instance72" class="wb_element wb_element_shape">
+               <div class="wb_shp"></div>
+            </div>
+         </div>
+         <div class="wb_cont_bg"></div>
+      </div>
+      <div class="wb_sbg" style="height: 1153px; min-height: 1153px;"></div>
+   </div>
+</div>
