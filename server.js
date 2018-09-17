@@ -35,6 +35,7 @@ app.use('/plans', require('./expressRoutes/planRoutes'));
 app.use('/stock', require('./expressRoutes/stockRoutes'));
 app.use('/subscription', require('./expressRoutes/subscriptionRoutes'));
 app.use('/asset', require('./expressRoutes/assetRoutes'));
+app.use('/inquiry', require('./expressRoutes/inquiryRoutes'));
 app.use('/', require('./expressRoutes/userRoutes'));
 // error handler
 app.use(function (err, req, res, next) {

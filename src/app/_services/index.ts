@@ -6,3 +6,4 @@ export * from './subscription.service';
 export * from './asset.service';
 export * from './pricing.service';
 export * from './stock.service';
+export * from './inquiry.service';

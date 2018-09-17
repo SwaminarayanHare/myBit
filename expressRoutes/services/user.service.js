@@ -14,6 +14,7 @@ db.bind('plans');
 db.bind('subscriptions');
 db.bind('asset');
 db.bind('stock');
+db.bind('inquiry');
 var service = {};
 hbs = require('nodemailer-express-handlebars'),
 senderemail = process.env.MAILER_EMAIL_ID,
@@ -60,6 +61,10 @@ service.addStock= addStock;
 service.updateStock = updateStock;
 service.getAllStock = getAllStock;
 service.deleteStock = deleteStock;
+service.addInquiry= addInquiry;
+service.updateInquiry = updateInquiry;
+service.getAllInquiry = getAllInquiry;
+service.deleteInquiry = deleteInquiry;
 
 module.exports = service;
 
@@ -701,3 +706,61 @@ function addStock(stockParam) {
         return deferred.promise;
     }
 
+function addInquiry(inquiryParam) {
+    var deferred = Q.defer();
+    // validation
+        db.inquiry.insert(
+            inquiryParam,
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err.name + ': ' + err.message);
+                }
+                else{
+                    deferred.resolve("Inquiry created successfully!");
+                }
+            });      
+                return deferred.promise;
+    }
+
+    function updateInquiry(_id, inquiryParam) {
+        var deferred = Q.defer();
+            // fields to update
+            var set = {
+                comment: inquiryParam.comment,
+                isFulfilled: inquiryParam.isFulfilled
+            };
+    
+            db.inquiry.update(
+                { _id: mongo.helper.toObjectID(_id) },
+                { $set: set },
+                function (err, doc) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+                    deferred.resolve();
+                });
+        return deferred.promise;
+    }
+    
+    function getAllInquiry() {
+        var deferred = Q.defer();
+    
+        db.inquiry.find().toArray(function (err, inquiry) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+            deferred.resolve(inquiry);
+        });
+    
+        return deferred.promise;
+    }
+
+    function deleteInquiry(_id) {
+        var deferred = Q.defer();
+    
+        db.inquiry.remove(
+            { _id: mongo.helper.toObjectID(_id) },
+            function (err) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+    
+                deferred.resolve();
+            });
+    
+        return deferred.promise;
+    }
