@@ -709,6 +709,7 @@ function addStock(stockParam) {
 function addInquiry(inquiryParam) {
     var deferred = Q.defer();
     // validation
+
         db.inquiry.insert(
             inquiryParam,
             function (err, doc) {
@@ -716,6 +717,7 @@ function addInquiry(inquiryParam) {
                     deferred.reject(err.name + ': ' + err.message);
                 }
                 else{
+                  console.log(inquiryParam)
                       var data = {
                        to: 'mytradnix@gmail.com',
                        cc: inquiryParam.email,

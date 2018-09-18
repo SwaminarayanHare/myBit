@@ -32,6 +32,7 @@ export class InquiryComponent implements OnInit {
           .subscribe(
               data => {
                   this.alertService.success('We have received your Inquiry! Our executive will get back to you soon.Cheers!!', true);
+                   this.loading = false;
               },
               error => {
                   this.alertService.error(error);

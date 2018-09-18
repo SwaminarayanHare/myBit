@@ -27,7 +27,7 @@ app.use(expressJwt({
         }
         return null;
     }
-}).unless({ path: ['/users/authenticate', '/users/register','/users/forgotpassword','/resetpassword'] }));
+}).unless({ path: ['/users/authenticate', '/users/register','/inquiry/add','/users/forgotpassword','/resetpassword'] }));
 
 // routes
 app.use('/users', require('./expressRoutes/userRoutes'));
