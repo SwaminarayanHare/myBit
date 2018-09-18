@@ -19,7 +19,16 @@ export class AdminhomeComponent implements OnInit {
     this.loadAllUsers();
   }
   exportAsXLSX():void {
-   this.excelService.exportAsExcelFile(this.users, 'sample');
+   var temp  = JSON.parse(JSON.stringify(this.users));
+   temp.forEach(function(x){
+    delete x._id;
+    delete x.password;
+    delete x.isAdmin;
+    delete x.reset_password_expires;
+    delete x.reset_password_token;
+    delete x.hash_password;    
+   });
+   this.excelService.exportAsExcelFile(temp, 'report');
   }  
   private loadAllUsers() {
     this.userService.getAll().subscribe(users => { this.users = users.sort((a, b) => a.doj > b.doj ? -1 : a.doj < b.doj ? 1 : 0); 

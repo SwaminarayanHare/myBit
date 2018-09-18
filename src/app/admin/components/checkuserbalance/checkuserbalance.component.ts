@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription,Plan } from '../../../_models';
-import { SubscriptionService,PlanService, AlertService } from '../../../_services';
+import { SubscriptionService,PlanService, ExcelService, AlertService } from '../../../_services';
 
 
 @Component({
@@ -16,13 +16,21 @@ export class CheckuserbalanceComponent implements OnInit {
   model: any = {};
   plans: Plan[] = [];
   loading =false;
-  constructor(private subscriptionService: SubscriptionService,private planService:PlanService, private alertService:AlertService) {
+  constructor(private subscriptionService: SubscriptionService,private planService:PlanService, private alertService:AlertService, private excelService: ExcelService) {
      
   }
   ngOnInit() {
     this.loadAllSubs();
     this.getAllPlans()
   }
+  exportAsXLSX():void {
+   var temp  = JSON.parse(JSON.stringify(this.subscriptions));
+   temp.forEach(function(x){
+    delete x._id;
+    delete x.userid;   
+   });
+   this.excelService.exportAsExcelFile(temp, 'report');
+  }    
   private loadAllSubs() {
     this.subscriptionService.getAll().subscribe(subscriptions => { this.subscriptions = subscriptions.sort((a, b) => a.subscriptionDate > b.subscriptionDate ? -1 : a.subscriptionDate < b.subscriptionDate ? 1 : 0);; 
     });
