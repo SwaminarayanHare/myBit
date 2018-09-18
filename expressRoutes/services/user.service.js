@@ -716,7 +716,23 @@ function addInquiry(inquiryParam) {
                     deferred.reject(err.name + ': ' + err.message);
                 }
                 else{
-                    deferred.resolve("Inquiry created successfully!");
+                      var data = {
+                       to: 'mytradnix@gmail.com',
+                       cc: inquiryParam.email,
+                       from: senderemail,
+                       template: 'inquiry-email',
+                       subject: 'Inquiry for Product',
+                       context: {
+                        inquiryparam: inquiryParam
+                       }
+                     };       
+                     smtpTransport.sendMail(data, function(err,info) {
+                       if (!err) {
+                        deferred.resolve("Inquiry created successfully!");
+                       } else {
+                         deferred.reject(err.name + ': ' + err.message);
+                       }
+                     });
                 }
             });      
                 return deferred.promise;
