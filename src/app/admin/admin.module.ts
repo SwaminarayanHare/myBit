@@ -16,7 +16,7 @@ import { AddStockComponent } from './components/add-stock/add-stock.component';
 import { AddmanualstockComponent } from './components/addmanualstock/addmanualstock.component';
 import { LiveNavComponent } from './components/live-nav/live-nav.component';
 import { AdminalertComponent } from '../_directives/adminalert.component';
-import { AlertService, AuthenticationService, UserService, PlanService, SubscriptionService, AssetService, StockService} from '../_services';
+import { AlertService, AuthenticationService, UserService, PlanService, SubscriptionService, AssetService, StockService, ExcelService} from '../_services';
 
 
 @NgModule({
@@ -46,7 +46,8 @@ import { AlertService, AuthenticationService, UserService, PlanService, Subscrip
     PlanService,
     SubscriptionService,
     AssetService,
-    StockService
+    StockService,
+    ExcelService
   ],
   bootstrap: [DashboardComponent]
 })

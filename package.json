@@ -32,6 +32,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-jwt": "^3.0.1",
+    "file-saver": "^1.3.8",
     "jsonwebtoken": "^5.0.2",
     "lodash": "^4.17.10",
     "mongodb": "^2.0.0",
@@ -44,6 +45,7 @@
     "request": "^2.87.0",
     "rootpath": "^0.1.2",
     "rxjs": "^5.5.6",
+    "xlsx": "^0.14.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
