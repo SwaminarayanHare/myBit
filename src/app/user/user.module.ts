@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UpdatedocumentComponent } from './components/updatedocument/updatedocument.component';
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { UserchartsComponent } from './components/usercharts/usercharts.component';
+import { DynamicChartsComponent } from './components/dynamic-charts/dynamic-charts.component';
 import { CommoncomponentModule } from '../commoncomponent/commoncomponent.module';
 import { FormsModule }   from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
@@ -18,7 +19,7 @@ import {  SubscriptionService, AssetService, StockService,PricingService } from 
     FormsModule,
     ChartsModule
   ],
-  declarations: [ DashboardComponent, UserhomeComponent, UpdatedocumentComponent, UserchartsComponent ],
+  declarations: [ DashboardComponent, UserhomeComponent, UpdatedocumentComponent, UserchartsComponent, DynamicChartsComponent ],
   providers:[ SubscriptionService, AssetService , StockService, PricingService]
 })
 export class UserModule { }
