@@ -21,9 +21,9 @@ const httpOptions = {
 @Injectable()
 export class PricingService {
 
-    //private url = "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?sort=market_cap&limit=5000&cryptocurrency_type=tokens&convert=INR"; 
-    private url ="https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=500&convert=INR";
-    private coinlisturl = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v2/listings/"
+    //private url = "https://mytrad-cors.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?sort=market_cap&limit=5000&cryptocurrency_type=tokens&convert=INR"; 
+    private url ="https://mytrad-cors.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=500&convert=INR";
+    private coinlisturl = "https://mytrad-cors.herokuapp.com/https://api.coinmarketcap.com/v2/listings/"
     
     constructor(private http: HttpClient) { 
     }
